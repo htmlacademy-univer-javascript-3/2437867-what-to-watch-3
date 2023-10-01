@@ -1,6 +1,6 @@
-import Footer from "../../components/footer/footer.tsx";
-import Logo from "../../components/logo/logo.tsx";
-import SignInForm from "../../components/sign-in/sign-in-form.tsx";
+import Footer from '../../components/footer/footer.tsx';
+import Logo from '../../components/logo/logo.tsx';
+import SignInForm from '../../components/sign-in/sign-in-form.tsx';
 
 function SignInScreen() {
   return (

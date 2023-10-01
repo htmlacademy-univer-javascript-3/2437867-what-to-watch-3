@@ -1,6 +1,6 @@
 type CatalogGenreProps = {
-  title: string,
-  className: string
+  title: string;
+  className: string;
 }
 
 function CatalogGenre(props: CatalogGenreProps) {

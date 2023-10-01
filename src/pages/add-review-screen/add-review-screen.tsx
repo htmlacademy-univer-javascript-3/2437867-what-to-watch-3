@@ -1,13 +1,13 @@
-import User from "../../components/user/user.tsx";
-import Logo from "../../components/logo/logo.tsx";
-import AddReview from "../../components/add-review/add-review.tsx";
+import User from '../../components/user/user.tsx';
+import Logo from '../../components/logo/logo.tsx';
+import AddReview from '../../components/add-review/add-review.tsx';
 
 type AddReviewScreenProps = {
-  backgroundSrc: string,
-  backgroundAlt: string,
-  title: string,
-  posterSrc: string,
-  posterAlt: string,
+  backgroundSrc: string;
+  backgroundAlt: string;
+  title: string;
+  posterSrc: string;
+  posterAlt: string;
 }
 
 function AddReviewScreen(props: AddReviewScreenProps) {
@@ -39,7 +39,8 @@ function AddReviewScreen(props: AddReviewScreenProps) {
 
         <div className="film-card__poster film-card__poster--small">
           <img src={props.posterSrc} alt={props.posterAlt} width="218"
-               height="327"/>
+            height="327"
+          />
         </div>
       </div>
 

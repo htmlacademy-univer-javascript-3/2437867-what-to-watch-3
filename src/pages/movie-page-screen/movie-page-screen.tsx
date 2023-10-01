@@ -1,24 +1,24 @@
-import Footer from "../../components/footer/footer.tsx";
-import {moreLikeThis} from "../../consts.ts";
-import FilmCard from "../../components/film-card/film-card.tsx";
-import Logo from "../../components/logo/logo.tsx";
-import User from "../../components/user/user.tsx";
-import FilmCardNavigation from "../../components/film-card-navigation/film-card-navigation.tsx";
+import Footer from '../../components/footer/footer.tsx';
+import {moreLikeThis} from '../../consts.ts';
+import FilmCard from '../../components/film-card/film-card.tsx';
+import Logo from '../../components/logo/logo.tsx';
+import User from '../../components/user/user.tsx';
+import FilmCardNavigation from '../../components/film-card-navigation/film-card-navigation.tsx';
 
 type MoviePageScreenProps = {
-  backgroundSrc: string,
-  backgroundAlt: string,
-  title: string,
-  posterSrc: string,
-  posterAlt: string,
-  genre: string,
-  year: number,
-  ratingScore: string,
-  ratingLevel: string,
-  ratingCount: number,
-  movieDescription: string,
-  movieDirector: string,
-  movieStarring: string,
+  backgroundSrc: string;
+  backgroundAlt: string;
+  title: string;
+  posterSrc: string;
+  posterAlt: string;
+  genre: string;
+  year: number;
+  ratingScore: string;
+  ratingLevel: string;
+  ratingCount: number;
+  movieDescription: string;
+  movieDirector: string;
+  movieStarring: string;
 }
 
 function MoviePageScreen(props: MoviePageScreenProps) {
@@ -70,7 +70,8 @@ function MoviePageScreen(props: MoviePageScreenProps) {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img src={props.posterSrc} alt={props.posterAlt} width="218"
-                   height="327"/>
+                height="327"
+              />
             </div>
 
             <div className="film-card__desc">
@@ -101,7 +102,7 @@ function MoviePageScreen(props: MoviePageScreenProps) {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {moreLikeThis.map((x) => <FilmCard posterSrc={x.posterSrc} posterAlt={x.posterAlt} title={x.title}/>)}
+            {moreLikeThis.map((x) => <FilmCard key={props.posterSrc} posterSrc={x.posterSrc} posterAlt={x.posterAlt} title={x.title}/>)}
           </div>
         </section>
 

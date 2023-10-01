@@ -1,18 +1,18 @@
-import Footer from "../../components/footer/footer.tsx";
-import {catalogGenresTypes, filmCardsDescription} from "../../consts.ts";
-import CatalogGenre from "../../components/catalog-genre/catalog-genre.tsx";
-import FilmCard from "../../components/film-card/film-card.tsx";
-import Logo from "../../components/logo/logo.tsx";
-import User from "../../components/user/user.tsx";
+import Footer from '../../components/footer/footer.tsx';
+import {catalogGenresTypes, filmCardsDescription} from '../../consts.ts';
+import CatalogGenre from '../../components/catalog-genre/catalog-genre.tsx';
+import FilmCard from '../../components/film-card/film-card.tsx';
+import Logo from '../../components/logo/logo.tsx';
+import User from '../../components/user/user.tsx';
 
 type MainScreenProps = {
-  backgroundSrc: string,
-  backgroundAlt: string,
-  title: string,
-  posterSrc: string,
-  posterAlt: string,
-  genre: string,
-  year: number
+  backgroundSrc: string;
+  backgroundAlt: string;
+  title: string;
+  posterSrc: string;
+  posterAlt: string;
+  genre: string;
+  year: number;
 }
 
 function MainScreen(props: MainScreenProps) {
@@ -24,14 +24,17 @@ function MainScreen(props: MainScreenProps) {
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
-        <Logo/>
-        <User/>
+        <header className="page-header film-card__head">
+          <Logo/>
+          <User/>
+        </header>
 
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
               <img src={props.posterSrc} alt={props.posterAlt} width="218"
-                   height="327"/>
+                height="327"
+              />
             </div>
 
             <div className="film-card__desc">
@@ -66,14 +69,17 @@ function MainScreen(props: MainScreenProps) {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            {catalogGenresTypes.map((x) => <CatalogGenre title={x}
-                                                         className={x === catalogGenresTypes[0] ? "catalog__genres-item catalog__genres-item--active" : "catalog__genres-item"}
-            />)}
+            {catalogGenresTypes.map((x) => (
+              <CatalogGenre key={x} title={x}
+                className={x === catalogGenresTypes[0] ? 'catalog__genres-item catalog__genres-item--active' : 'catalog__genres-item'}
+              />))}
           </ul>
 
           <div className="catalog__films-list">
-            {filmCardsDescription.map((x) => <FilmCard posterSrc={x.posterSrc} posterAlt={x.posterAlt}
-                                                       title={x.title}/>)}
+            {filmCardsDescription.map((x) => (
+              <FilmCard key={props.posterSrc} posterSrc={x.posterSrc} posterAlt={x.posterAlt}
+                title={x.title}
+              />))}
           </div>
 
           <div className="catalog__more">

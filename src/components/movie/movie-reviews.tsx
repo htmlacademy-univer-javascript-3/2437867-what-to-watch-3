@@ -1,8 +1,8 @@
 type MovieReviewProps = {
-  review: string,
-  author: string,
-  date: string,
-  rating: string,
+  review: string;
+  author: string;
+  date: string;
+  rating: string;
 }
 
 function MovieReview(props: MovieReviewProps) {
@@ -23,14 +23,14 @@ function MovieReview(props: MovieReviewProps) {
 }
 
 type MovieReviewsProps = {
-  reviews: MovieReviewProps[]
+  reviews: MovieReviewProps[];
 }
 
 function MovieReviews(props: MovieReviewsProps) {
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">
-        {props.reviews.map((x) => <MovieReview review={x.review} author={x.author} date={x.date} rating={x.rating}/>)}
+        {props.reviews.map((x) => <MovieReview key={x.review} review={x.review} author={x.author} date={x.date} rating={x.rating}/>)}
       </div>
     </div>
   );

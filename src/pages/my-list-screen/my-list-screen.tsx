@@ -1,8 +1,8 @@
-import Footer from "../../components/footer/footer.tsx";
-import Logo from "../../components/logo/logo.tsx";
-import User from "../../components/user/user.tsx";
-import {myListFilms} from "../../consts.ts";
-import FilmCard from "../../components/film-card/film-card.tsx";
+import Footer from '../../components/footer/footer.tsx';
+import Logo from '../../components/logo/logo.tsx';
+import User from '../../components/user/user.tsx';
+import {myListFilms} from '../../consts.ts';
+import FilmCard from '../../components/film-card/film-card.tsx';
 
 function MyListScreen() {
   return (
@@ -18,7 +18,7 @@ function MyListScreen() {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__films-list">
-          {myListFilms.map((x) => <FilmCard posterSrc={x.posterSrc} posterAlt={x.posterAlt} title={x.title}/>)}
+          {myListFilms.map((x) => <FilmCard key={x.posterSrc} posterSrc={x.posterSrc} posterAlt={x.posterAlt} title={x.title}/>)}
         </div>
       </section>
 
