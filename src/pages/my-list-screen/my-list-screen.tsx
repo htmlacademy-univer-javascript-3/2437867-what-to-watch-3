@@ -18,7 +18,7 @@ function MyListScreen() {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__films-list">
-          {myListFilms.map((x) => <FilmCard key={x.posterSrc} posterSrc={x.posterSrc} posterAlt={x.posterAlt} title={x.title}/>)}
+          {myListFilms.map((film) => <FilmCard key={film.posterSrc} posterSrc={film.posterSrc} posterAlt={film.posterAlt} title={film.title}/>)}
         </div>
       </section>
 

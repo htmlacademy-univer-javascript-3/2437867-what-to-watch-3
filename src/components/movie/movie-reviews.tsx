@@ -30,7 +30,7 @@ function MovieReviews(props: MovieReviewsProps) {
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">
-        {props.reviews.map((x) => <MovieReview key={x.review} review={x.review} author={x.author} date={x.date} rating={x.rating}/>)}
+        {props.reviews.map((review) => <MovieReview key={review.review} review={review.review} author={review.author} date={review.date} rating={review.rating}/>)}
       </div>
     </div>
   );
