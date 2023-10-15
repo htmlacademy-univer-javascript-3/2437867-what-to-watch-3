@@ -27,7 +27,9 @@ function App() {
         <Route path={AppRoute.Login} element={<SignInScreen/>}/>
         <Route path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} children={<MyListScreen/>}/>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <MyListScreen/>
+            </PrivateRoute>
           }
         />
         <Route path={AppRoute.Movie}
