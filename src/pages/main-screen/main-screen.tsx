@@ -69,16 +69,16 @@ function MainScreen(props: MainScreenProps) {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            {catalogGenresTypes.map((x) => (
-              <CatalogGenre key={x} title={x}
-                className={x === catalogGenresTypes[0] ? 'catalog__genres-item catalog__genres-item--active' : 'catalog__genres-item'}
+            {catalogGenresTypes.map((catalogGenre) => (
+              <CatalogGenre key={catalogGenre} title={catalogGenre}
+                className={catalogGenre === catalogGenresTypes[0] ? 'catalog__genres-item catalog__genres-item--active' : 'catalog__genres-item'}
               />))}
           </ul>
 
           <div className="catalog__films-list">
-            {filmCardsDescription.map((x) => (
-              <FilmCard key={props.posterSrc} posterSrc={x.posterSrc} posterAlt={x.posterAlt}
-                title={x.title}
+            {filmCardsDescription.map((film) => (
+              <FilmCard key={props.posterSrc} posterSrc={film.posterSrc} posterAlt={film.posterAlt}
+                title={film.title}
               />))}
           </div>
 
