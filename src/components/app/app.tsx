@@ -8,58 +8,53 @@ import PlayerScreen from '../../pages/player-screen/player-screen.tsx';
 import NotFoundError from '../errors/not-found-error.tsx';
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx';
+import {Films} from "../../types/types.ts";
 
-function App() {
+type AppProps = {
+  backgroundSrc: string
+  backgroundAlt: string
+  myListFilmsCount: number
+  films: Films
+}
+
+function App(props: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={
-          <MainScreen backgroundSrc={'img/bg-the-grand-budapest-hotel.jpg'}
-            backgroundAlt={'The Grand Budapest Hotel'}
-            title={'The Grand Budapest Hotel'}
-            posterSrc={'img/the-grand-budapest-hotel-poster.jpg'}
-            posterAlt={'The Grand Budapest Hotel poster'}
-            genre={'Drama'}
-            year={2014}
+          <MainScreen backgroundSrc={props.backgroundSrc}
+                      backgroundAlt={props.backgroundAlt}
+                      films={props.films} mainFilm={props.films[0]}
+                      myListFilmsCount={props.myListFilmsCount}
           />
         }
         />
         <Route path={AppRoute.Login} element={<SignInScreen/>}/>
         <Route path={AppRoute.MyList}
-          element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <MyListScreen/>
-            </PrivateRoute>
-          }
+               element={
+                 <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                   <MyListScreen films={props.films} myListFilmsCount={props.myListFilmsCount}/>
+                 </PrivateRoute>
+               }
         />
-        <Route path={AppRoute.Movie}
-          element={
-            <MoviePageScreen backgroundSrc={'img/bg-the-grand-budapest-hotel.jpg'}
-              backgroundAlt={'The Grand Budapest Hotel'}
-              title={'The Grand Budapest Hotel'}
-              posterSrc={'img/the-grand-budapest-hotel-poster.jpg'}
-              posterAlt={'The Grand Budapest Hotel poster'}
-              genre={'Drama'}
-              year={2014} ratingScore={'8,9'}
-              ratingLevel={'Very good'}
-              ratingCount={'240 ratings'}
-              movieDescription={'In the 1930s, the Grand Budapest Hotel is a popular European ski resort'}
-              movieDirector={'Director: Wes Anderson'}
-              movieStarring={'Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other'}
-            />
-          }
+        <Route path={AppRoute.Movie + '/:id'}
+               element={
+                 <MoviePageScreen backgroundSrc={props.backgroundSrc}
+                                  backgroundAlt={props.backgroundAlt}
+                                  films={props.films}
+                                  myListFilmsCount={props.myListFilmsCount}
+                 />
+               }
         />
-        <Route path={AppRoute.Review}
-          element={
-            <AddReviewScreen backgroundSrc={'img/bg-the-grand-budapest-hotel.jpg'}
-              backgroundAlt={'The Grand Budapest Hotel'}
-              title={'The Grand Budapest Hotel'}
-              posterSrc={'img/the-grand-budapest-hotel-poster.jpg'}
-              posterAlt={'The Grand Budapest Hotel poster'}
-            />
-          }
+        <Route path={AppRoute.Movie + '/:id' + AppRoute.Review}
+               element={
+                 <AddReviewScreen backgroundSrc={props.backgroundSrc}
+                                  backgroundAlt={props.backgroundAlt}
+                                  films={props.films}
+                 />
+               }
         />
-        <Route path={AppRoute.Player} element={<PlayerScreen/>}/>
+        <Route path={AppRoute.Player + '/:id'} element={<PlayerScreen films={props.films}/>}/>
         <Route path={AppRoute.NotFound} element={<NotFoundError/>}/>
       </Routes>
     </BrowserRouter>

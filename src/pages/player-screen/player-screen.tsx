@@ -1,9 +1,21 @@
-function PlayerScreen() {
+import {useNavigate, useParams} from "react-router-dom";
+import {Films} from "../../types/types.ts";
+import {AppRoute} from "../../consts.ts";
+
+type PlayerScreenProps = {
+  films: Films
+}
+
+function PlayerScreen(props: PlayerScreenProps) {
+  const params = useParams();
+  const navigate = useNavigate();
+  const film = props.films.filter(film => film.id === params.id)[0];
+
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={film.video} className="player__video" poster="img/player-poster.jpg"></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button type="button" className="player__exit" onClick={() => navigate(AppRoute.Movie + `/${film.id}`)}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
