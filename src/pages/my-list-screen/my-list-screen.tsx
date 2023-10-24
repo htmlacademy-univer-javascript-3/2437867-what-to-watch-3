@@ -1,12 +1,12 @@
 import Footer from '../../components/footer/footer.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
-import {Films} from "../../types/types.ts";
-import FilmsContainer from "../../components/films-container/films-container.tsx";
+import {Films} from '../../types/types.ts';
+import FilmsContainer from '../../components/films-container/films-container.tsx';
 
 type MyListScreenProps = {
-  films: Films,
-  myListFilmsCount: number,
+  films: Films;
+  myListFilmsCount: number;
 }
 function MyListScreen(props: MyListScreenProps) {
   return (

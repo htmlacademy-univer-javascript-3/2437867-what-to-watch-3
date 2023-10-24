@@ -1,7 +1,7 @@
-import {useState} from "react";
+import {useState} from 'react';
 
 function AddReview() {
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
   return (
     <div className="add-review">
       <form action="#" className="add-review__form">

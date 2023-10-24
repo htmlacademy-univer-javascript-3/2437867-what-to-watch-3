@@ -8,13 +8,13 @@ import PlayerScreen from '../../pages/player-screen/player-screen.tsx';
 import NotFoundError from '../errors/not-found-error.tsx';
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx';
-import {Films} from "../../types/types.ts";
+import {Films} from '../../types/types.ts';
 
 type AppProps = {
-  backgroundSrc: string
-  backgroundAlt: string
-  myListFilmsCount: number
-  films: Films
+  backgroundSrc: string;
+  backgroundAlt: string;
+  myListFilmsCount: number;
+  films: Films;
 }
 
 function App(props: AppProps) {
@@ -23,38 +23,38 @@ function App(props: AppProps) {
       <Routes>
         <Route path={AppRoute.Main} element={
           <MainScreen backgroundSrc={props.backgroundSrc}
-                      backgroundAlt={props.backgroundAlt}
-                      films={props.films} mainFilm={props.films[0]}
-                      myListFilmsCount={props.myListFilmsCount}
+            backgroundAlt={props.backgroundAlt}
+            films={props.films} mainFilm={props.films[0]}
+            myListFilmsCount={props.myListFilmsCount}
           />
         }
         />
         <Route path={AppRoute.Login} element={<SignInScreen/>}/>
         <Route path={AppRoute.MyList}
-               element={
-                 <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                   <MyListScreen films={props.films} myListFilmsCount={props.myListFilmsCount}/>
-                 </PrivateRoute>
-               }
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <MyListScreen films={props.films} myListFilmsCount={props.myListFilmsCount}/>
+            </PrivateRoute>
+          }
         />
-        <Route path={AppRoute.Movie + '/:id'}
-               element={
-                 <MoviePageScreen backgroundSrc={props.backgroundSrc}
-                                  backgroundAlt={props.backgroundAlt}
-                                  films={props.films}
-                                  myListFilmsCount={props.myListFilmsCount}
-                 />
-               }
+        <Route path={`${AppRoute.Movie }/:id`}
+          element={
+            <MoviePageScreen backgroundSrc={props.backgroundSrc}
+              backgroundAlt={props.backgroundAlt}
+              films={props.films}
+              myListFilmsCount={props.myListFilmsCount}
+            />
+          }
         />
-        <Route path={AppRoute.Movie + '/:id' + AppRoute.Review}
-               element={
-                 <AddReviewScreen backgroundSrc={props.backgroundSrc}
-                                  backgroundAlt={props.backgroundAlt}
-                                  films={props.films}
-                 />
-               }
+        <Route path={`${AppRoute.Movie }/:id${ AppRoute.Review}`}
+          element={
+            <AddReviewScreen backgroundSrc={props.backgroundSrc}
+              backgroundAlt={props.backgroundAlt}
+              films={props.films}
+            />
+          }
         />
-        <Route path={AppRoute.Player + '/:id'} element={<PlayerScreen films={props.films}/>}/>
+        <Route path={`${AppRoute.Player }/:id`} element={<PlayerScreen films={props.films}/>}/>
         <Route path={AppRoute.NotFound} element={<NotFoundError/>}/>
       </Routes>
     </BrowserRouter>

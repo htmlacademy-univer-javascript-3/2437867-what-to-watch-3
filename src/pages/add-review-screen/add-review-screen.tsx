@@ -1,19 +1,19 @@
 import User from '../../components/user/user.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import AddReview from '../../components/add-review/add-review.tsx';
-import {Films} from "../../types/types.ts";
-import {Link, useParams} from "react-router-dom";
-import {AppRoute} from "../../consts.ts";
+import {Films} from '../../types/types.ts';
+import {Link, useParams} from 'react-router-dom';
+import {AppRoute} from '../../consts.ts';
 
 type AddReviewScreenProps = {
   backgroundSrc: string;
   backgroundAlt: string;
-  films: Films
+  films: Films;
 }
 
 function AddReviewScreen(props: AddReviewScreenProps) {
   const params = useParams();
-  const film = props.films.filter(film => film.id === params.id)[0];
+  const film = props.films.filter((f) => f.id === params.id)[0];
 
   return (
     <section className="film-card film-card--full">
@@ -30,7 +30,7 @@ function AddReviewScreen(props: AddReviewScreenProps) {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={AppRoute.Movie + `/${film.id}`} className="breadcrumbs__link">{film.title}</Link>
+                <Link to={`${AppRoute.Movie }/${film.id}`} className="breadcrumbs__link">{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -43,7 +43,7 @@ function AddReviewScreen(props: AddReviewScreenProps) {
 
         <div className="film-card__poster film-card__poster--small">
           <img src={film.posterSrc} alt={film.posterAlt} width="218"
-               height="327"
+            height="327"
           />
         </div>
       </div>

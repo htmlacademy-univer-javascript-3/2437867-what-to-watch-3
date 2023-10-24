@@ -2,21 +2,21 @@ import Footer from '../../components/footer/footer.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmCardNavigation from '../../components/film-card-navigation/film-card-navigation.tsx';
-import {Link, useParams} from "react-router-dom";
-import FilmsContainer from "../../components/films-container/films-container.tsx";
-import {Films} from "../../types/types.ts";
-import {AppRoute} from "../../consts.ts";
+import {Link, useParams} from 'react-router-dom';
+import FilmsContainer from '../../components/films-container/films-container.tsx';
+import {Films} from '../../types/types.ts';
+import {AppRoute} from '../../consts.ts';
 
 type MoviePageScreenProps = {
   backgroundSrc: string;
   backgroundAlt: string;
-  films: Films,
-  myListFilmsCount: number,
+  films: Films;
+  myListFilmsCount: number;
 }
 
 function MoviePageScreen(props: MoviePageScreenProps) {
   const params = useParams();
-  const film = props.films.filter(film => film.id === params.id)[0];
+  const film = props.films.filter((f) => f.id === params.id)[0];
   return (
     <>
       <section className="film-card film-card--full">
@@ -55,7 +55,7 @@ function MoviePageScreen(props: MoviePageScreenProps) {
                   <span>My list</span>
                   <span className="film-card__count">{props.myListFilmsCount}</span>
                 </button>
-                <Link to={AppRoute.Movie + `/${film.id}` + AppRoute.Review} className="btn film-card__button">Add review</Link>
+                <Link to={`${AppRoute.Movie }/${film.id}${ AppRoute.Review}`} className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>

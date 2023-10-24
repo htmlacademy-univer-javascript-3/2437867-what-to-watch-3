@@ -3,15 +3,15 @@ import {catalogGenresTypes} from '../../consts.ts';
 import CatalogGenre from '../../components/catalog-genre/catalog-genre.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
-import FilmsContainer from "../../components/films-container/films-container.tsx";
-import {Film, Films} from "../../types/types.ts";
+import FilmsContainer from '../../components/films-container/films-container.tsx';
+import {Film, Films} from '../../types/types.ts';
 
 type MainScreenProps = {
   backgroundSrc: string;
   backgroundAlt: string;
-  films: Films,
-  mainFilm: Film,
-  myListFilmsCount: number,
+  films: Films;
+  mainFilm: Film;
+  myListFilmsCount: number;
 }
 
 function MainScreen(props: MainScreenProps) {
