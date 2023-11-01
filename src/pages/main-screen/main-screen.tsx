@@ -1,21 +1,21 @@
 import Footer from '../../components/footer/footer.tsx';
-import {catalogGenresTypes, filmCardsDescription} from '../../consts.ts';
+import {catalogGenresTypes} from '../../consts.ts';
 import CatalogGenre from '../../components/catalog-genre/catalog-genre.tsx';
-import FilmCard from '../../components/film-card/film-card.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
+import FilmsContainer from '../../components/films-container/films-container.tsx';
+import {Film, Films} from '../../types/types.ts';
 
 type MainScreenProps = {
   backgroundSrc: string;
   backgroundAlt: string;
-  title: string;
-  posterSrc: string;
-  posterAlt: string;
-  genre: string;
-  year: number;
+  films: Films;
+  mainFilm: Film;
+  myListFilmsCount: number;
 }
 
 function MainScreen(props: MainScreenProps) {
+  const mainFilm = props.mainFilm;
   return (
     <>
       <section className="film-card">
@@ -32,16 +32,16 @@ function MainScreen(props: MainScreenProps) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={props.posterSrc} alt={props.posterAlt} width="218"
+              <img src={mainFilm.posterSrc} alt={mainFilm.posterAlt} width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.title}</h2>
+              <h2 className="film-card__title">{mainFilm.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.year}</span>
+                <span className="film-card__genre">{mainFilm.genre}</span>
+                <span className="film-card__year">{mainFilm.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -56,7 +56,7 @@ function MainScreen(props: MainScreenProps) {
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">9</span>
+                  <span className="film-card__count">{props.myListFilmsCount}</span>
                 </button>
               </div>
             </div>
@@ -75,12 +75,7 @@ function MainScreen(props: MainScreenProps) {
               />))}
           </ul>
 
-          <div className="catalog__films-list">
-            {filmCardsDescription.map((film) => (
-              <FilmCard key={props.posterSrc} posterSrc={film.posterSrc} posterAlt={film.posterAlt}
-                title={film.title}
-              />))}
-          </div>
+          <FilmsContainer films={props.films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
