@@ -10,7 +10,7 @@ function FilmsContainer(props: FilmsContainerProps) {
     <div className="catalog__films-list">
       {props.films.map((film) => (
         <FilmCard key={film.id} id={film.id} posterSrc={film.posterSrc} posterAlt={film.posterAlt}
-                  title={film.title} videoLink={film.video}
+          title={film.title} videoLink={film.video}
         />))}
     </div>
   );

@@ -1,14 +1,14 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from "../../consts.ts";
-import VideoPlayer from "../video-player/video-player.tsx";
-import {useState} from "react";
+import {AppRoute} from '../../consts.ts';
+import VideoPlayer from '../video-player/video-player.tsx';
+import {useState} from 'react';
 
 export type FilmCardProps = {
   id: string;
   posterSrc: string;
   posterAlt: string;
   title: string;
-  videoLink: string,
+  videoLink: string;
 }
 
 function FilmCard(props: FilmCardProps) {
@@ -17,16 +17,17 @@ function FilmCard(props: FilmCardProps) {
 
   const onMouseEnter = () => {
     setTimer(setTimeout(() => setIsHovered(true), 1000));
-  }
+  };
 
   const onMouseLeave = () => {
     clearTimeout(timer);
-    setIsHovered(false)
-  }
+    setIsHovered(false);
+  };
 
   return (
     <article className="small-film-card catalog__films-card" onMouseEnter={onMouseEnter}
-             onMouseLeave={onMouseLeave}>
+      onMouseLeave={onMouseLeave}
+    >
       <div className="small-film-card__image">
         {
           isHovered ?
@@ -35,7 +36,7 @@ function FilmCard(props: FilmCardProps) {
         }
       </div>
       <h3 className="small-film-card__title">
-        <Link to={AppRoute.Movie + `/${props.id}`} className="small-film-card__link">{props.title}</Link>
+        <Link to={`${AppRoute.Movie }/${props.id}`} className="small-film-card__link">{props.title}</Link>
       </h3>
     </article>
   );

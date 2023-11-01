@@ -11,7 +11,8 @@ function VideoPlayer(props: VideoPlayerProps) {
       width="200"
       height="175"
       muted
-      autoPlay/>
+      autoPlay
+    />
   );
 }
 
