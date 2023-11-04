@@ -1,7 +1,7 @@
-import {Film} from "../../types/types.ts";
+import {Film} from '../../types/types.ts';
 
 type MovieOverviewProps = {
-  film: Film
+  film: Film;
 }
 
 function MovieOverview({film}: MovieOverviewProps) {

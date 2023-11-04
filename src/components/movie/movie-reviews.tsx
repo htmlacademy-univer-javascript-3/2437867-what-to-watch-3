@@ -1,4 +1,4 @@
-import {Reviews} from "../../types/types.ts";
+import {Reviews} from '../../types/types.ts';
 
 type MovieReviewsProps = {
   reviews: Reviews;

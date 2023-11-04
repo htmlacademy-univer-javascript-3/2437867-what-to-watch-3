@@ -5,7 +5,7 @@ import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {Films} from '../../types/types.ts';
 import {AppRoute} from '../../consts.ts';
-import Tabs from "../../components/tabs/tabs.tsx";
+import Tabs from '../../components/tabs/tabs.tsx';
 
 type MoviePageScreenProps = {
   backgroundSrc: string;
