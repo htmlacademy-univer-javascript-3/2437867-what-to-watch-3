@@ -1,11 +1,11 @@
 import Footer from '../../components/footer/footer.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
-import FilmCardNavigation from '../../components/film-card-navigation/film-card-navigation.tsx';
 import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {Films} from '../../types/types.ts';
 import {AppRoute} from '../../consts.ts';
+import Tabs from '../../components/tabs/tabs.tsx';
 
 type MoviePageScreenProps = {
   backgroundSrc: string;
@@ -68,26 +68,7 @@ function MoviePageScreen(props: MoviePageScreenProps) {
                 height="327"
               />
             </div>
-
-            <div className="film-card__desc">
-              <FilmCardNavigation/>
-
-              <div className="film-rating">
-                <div className="film-rating__score">{film.ratingScore}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">{film.ratingLevel}</span>
-                  <span className="film-rating__count">{film.ratingCount}</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                {film.movieDescription}
-
-                <p className="film-card__director"><strong>{film.movieDirector}</strong></p>
-
-                <p className="film-card__starring"><strong>{film.movieStarring}</strong></p>
-              </div>
-            </div>
+            <Tabs film={film}/>
           </div>
         </div>
       </section>
