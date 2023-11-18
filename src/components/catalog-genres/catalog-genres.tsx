@@ -6,7 +6,7 @@ type CatalogGenresProps = {
 }
 
 function CatalogGenres(props: CatalogGenresProps) {
-  const selectedGenre = useAppSelector((state) => state.genre);
+  const selectedGenre = useAppSelector((state) => state.selectedGenre);
   const dispatch = useAppDispatch();
   return (
     <>

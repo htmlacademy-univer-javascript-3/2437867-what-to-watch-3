@@ -2,8 +2,8 @@ import {Link} from 'react-router-dom';
 import {AppRoute, EXECUTION_DELAY} from '../../consts.ts';
 import VideoPlayer from '../video-player/video-player.tsx';
 import {useState} from 'react';
-import {useAppDispatch} from "../../hooks";
-import {resetShowMore} from "../../store/action.ts";
+import {useAppDispatch} from '../../hooks';
+import {resetShowMore} from '../../store/action.ts';
 
 export type FilmCardProps = {
   id: string;
