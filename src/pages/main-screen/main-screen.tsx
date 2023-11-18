@@ -5,9 +5,9 @@ import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {Film} from '../../types/types.ts';
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {useEffect} from "react";
-import {getFilms} from "../../store/action.ts";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useEffect} from 'react';
+import {getFilms} from '../../store/action.ts';
 
 type MainScreenProps = {
   backgroundSrc: string;
@@ -23,8 +23,8 @@ function MainScreen(props: MainScreenProps) {
   const selectedGenre = useAppSelector((state) => state.genre);
 
   useEffect(() => {
-      dispatch(getFilms());
-    }, [selectedGenre]);
+    dispatch(getFilms());
+  }, [selectedGenre, dispatch]);
   return (
     <>
       <section className="film-card">

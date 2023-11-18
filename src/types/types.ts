@@ -29,6 +29,6 @@ export type Review = {
 export type Reviews = Review[];
 
 export type StoreState = {
-  genre: string,
-  films: Films,
+  genre: string;
+  films: Films;
 };
