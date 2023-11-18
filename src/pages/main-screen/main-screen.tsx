@@ -8,6 +8,7 @@ import {Film} from '../../types/types.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {getFilms} from '../../store/action.ts';
+import ShowMore from '../../components/show-more/show-more.tsx';
 
 type MainScreenProps = {
   backgroundSrc: string;
@@ -19,8 +20,7 @@ type MainScreenProps = {
 function MainScreen(props: MainScreenProps) {
   const dispatch = useAppDispatch();
   const mainFilm = props.mainFilm;
-  const filmsByGenre = useAppSelector((state) => state.films);
-  const selectedGenre = useAppSelector((state) => state.genre);
+  const {films, selectedGenre, filmsCount} = useAppSelector((state) => state);
 
   useEffect(() => {
     dispatch(getFilms());
@@ -76,11 +76,8 @@ function MainScreen(props: MainScreenProps) {
       <div className="page-content">
         <section className="catalog">
           <CatalogGenres genres={catalogGenresTypes}/>
-          <FilmsContainer films={filmsByGenre}/>
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <FilmsContainer films={films}/>
+          {films.length >= filmsCount && <ShowMore/>}
         </section>
 
         <Footer/>
