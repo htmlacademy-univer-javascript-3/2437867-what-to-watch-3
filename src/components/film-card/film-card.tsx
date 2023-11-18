@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../consts.ts';
+import {AppRoute, EXECUTION_DELAY} from '../../consts.ts';
 import VideoPlayer from '../video-player/video-player.tsx';
 import {useState} from 'react';
 
@@ -16,7 +16,7 @@ function FilmCard(props: FilmCardProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const onMouseEnter = () => {
-    setTimer(setTimeout(() => setIsHovered(true), 1000));
+    setTimer(setTimeout(() => setIsHovered(true), EXECUTION_DELAY));
   };
 
   const onMouseLeave = () => {
