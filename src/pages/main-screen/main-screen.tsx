@@ -8,6 +8,7 @@ import {Film} from '../../types/types.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {getFilms} from '../../store/action.ts';
+import ShowMore from "../../components/show-more/show-more.tsx";
 
 type MainScreenProps = {
   backgroundSrc: string;
@@ -77,10 +78,7 @@ function MainScreen(props: MainScreenProps) {
         <section className="catalog">
           <CatalogGenres genres={catalogGenresTypes}/>
           <FilmsContainer films={filmsByGenre}/>
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMore/>
         </section>
 
         <Footer/>
