@@ -30,13 +30,13 @@ function Tabs(props: TabsProps) {
       <nav className="film-nav film-card__nav">
         <ul className="film-nav__list">
           <li className={cn('film-nav__item', {'film-nav__item--active': currentTab === Tab.Overview})}>
-            <a className="film-nav__link" onClick={() => setCurrentTab(Tab.Overview)}>Overview</a>
+            <button className="film-nav__link" onClick={() => setCurrentTab(Tab.Overview)}>Overview</button>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': currentTab === Tab.Details})}>
-            <a className="film-nav__link" onClick={() => setCurrentTab(Tab.Details)}>Details</a>
+            <button className="film-nav__link" onClick={() => setCurrentTab(Tab.Details)}>Details</button>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': currentTab === Tab.Reviews})}>
-            <a className="film-nav__link" onClick={() => setCurrentTab(Tab.Reviews)}>Reviews</a>
+            <button className="film-nav__link" onClick={() => setCurrentTab(Tab.Reviews)}>Reviews</button>
           </li>
         </ul>
       </nav>

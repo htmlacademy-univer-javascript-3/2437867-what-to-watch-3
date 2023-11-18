@@ -1,4 +1,7 @@
 export const catalogGenresTypes = ['All genres', 'Comedies', 'Crime', 'Documentary', 'Dramas', 'Horror', 'Kids & Family', 'Romance', 'Sci-Fi', 'Thrillers'];
+export const INITIAL_GENRE = 'All genres';
+
+export const EXECUTION_DELAY = 1000;
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',

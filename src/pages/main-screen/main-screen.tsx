@@ -1,21 +1,30 @@
 import Footer from '../../components/footer/footer.tsx';
 import {catalogGenresTypes} from '../../consts.ts';
-import CatalogGenre from '../../components/catalog-genre/catalog-genre.tsx';
+import CatalogGenres from '../../components/catalog-genres/catalog-genres.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
-import {Film, Films} from '../../types/types.ts';
+import {Film} from '../../types/types.ts';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useEffect} from 'react';
+import {getFilms} from '../../store/action.ts';
 
 type MainScreenProps = {
   backgroundSrc: string;
   backgroundAlt: string;
-  films: Films;
   mainFilm: Film;
   myListFilmsCount: number;
 }
 
 function MainScreen(props: MainScreenProps) {
+  const dispatch = useAppDispatch();
   const mainFilm = props.mainFilm;
+  const filmsByGenre = useAppSelector((state) => state.films);
+  const selectedGenre = useAppSelector((state) => state.genre);
+
+  useEffect(() => {
+    dispatch(getFilms());
+  }, [selectedGenre, dispatch]);
   return (
     <>
       <section className="film-card">
@@ -66,16 +75,8 @@ function MainScreen(props: MainScreenProps) {
 
       <div className="page-content">
         <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-          <ul className="catalog__genres-list">
-            {catalogGenresTypes.map((catalogGenre) => (
-              <CatalogGenre key={catalogGenre} title={catalogGenre}
-                className={catalogGenre === catalogGenresTypes[0] ? 'catalog__genres-item catalog__genres-item--active' : 'catalog__genres-item'}
-              />))}
-          </ul>
-
-          <FilmsContainer films={props.films}/>
+          <CatalogGenres genres={catalogGenresTypes}/>
+          <FilmsContainer films={filmsByGenre}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

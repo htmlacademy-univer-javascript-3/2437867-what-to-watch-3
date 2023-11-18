@@ -24,7 +24,7 @@ function App(props: AppProps) {
         <Route path={AppRoute.Main} element={
           <MainScreen backgroundSrc={props.backgroundSrc}
             backgroundAlt={props.backgroundAlt}
-            films={props.films} mainFilm={props.films[0]}
+            mainFilm={props.films[0]}
             myListFilmsCount={props.myListFilmsCount}
           />
         }
