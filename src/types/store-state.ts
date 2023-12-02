@@ -1,4 +1,4 @@
-import {Film, FilmPromo, Films} from "./film.ts";
+import {Film, FilmPromo, Films} from './film.ts';
 
 export type StoreState = {
   selectedGenre: string;

@@ -1,9 +1,9 @@
 export type FilmShortInfo = {
-  id: string
-  name: string
-  previewImage: string
-  previewVideoLink: string
-  genre: string
+  id: string;
+  name: string;
+  previewImage: string;
+  previewVideoLink: string;
+  genre: string;
 }
 
 export type FilmPromo = {

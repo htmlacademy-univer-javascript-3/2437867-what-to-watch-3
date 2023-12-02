@@ -9,7 +9,7 @@ import {
   showMoreFilms
 } from './action.ts';
 import {INITIAL_FILMS_COUNT, INITIAL_GENRE} from '../consts.ts';
-import {StoreState} from "../types/store-state.ts";
+import {StoreState} from '../types/store-state.ts';
 
 const initialState : StoreState = {
   isLoading: false,
@@ -41,12 +41,12 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(loadFilms, (state, action) => {
       state.films = action.payload;
       state.filmsByGenre = action.payload;
-      state.availableGenres = [INITIAL_GENRE, ...new Set(action.payload.map(x => x.genre))];
+      state.availableGenres = [INITIAL_GENRE, ...new Set(action.payload.map((x) => x.genre))];
     })
     .addCase(setLoadingStatus, (state, action) => {
       state.isLoading = action.payload;
     })
     .addCase(setPromoFilm, (state, action) => {
       state.promoFilm = action.payload;
-    })
+    });
 });

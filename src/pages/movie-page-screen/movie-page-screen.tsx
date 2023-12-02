@@ -4,7 +4,7 @@ import User from '../../components/user/user.tsx';
 import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {AppRoute} from '../../consts.ts';
-import {useAppSelector} from "../../hooks";
+import {useAppSelector} from '../../hooks';
 
 function MoviePageScreen() {
   const params = useParams();

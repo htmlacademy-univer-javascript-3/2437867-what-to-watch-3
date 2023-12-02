@@ -1,6 +1,6 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
-import {useAppSelector} from "../../hooks";
+import {useAppSelector} from '../../hooks';
 
 function PlayerScreen() {
   const params = useParams();
@@ -10,7 +10,7 @@ function PlayerScreen() {
 
   return (
     <div className="player">
-      <video src={film.previewVideoLink} className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={film.previewVideoLink} className="player__video" poster={film.previewImage}></video>
 
       <button type="button" className="player__exit" onClick={() => navigate(`${AppRoute.Movie }/${film.id}`)}>Exit</button>
 

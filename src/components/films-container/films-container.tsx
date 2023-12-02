@@ -1,6 +1,6 @@
 import FilmCard from '../film-card/film-card.tsx';
 import {useAppSelector} from '../../hooks';
-import {Films} from "../../types/film.ts";
+import {Films} from '../../types/film.ts';
 
 type FilmsContainerProps = {
   films: Films;

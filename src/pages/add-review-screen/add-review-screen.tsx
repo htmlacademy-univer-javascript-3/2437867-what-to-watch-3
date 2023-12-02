@@ -3,7 +3,7 @@ import Logo from '../../components/logo/logo.tsx';
 import AddReview from '../../components/add-review/add-review.tsx';
 import {Link, useParams} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
-import {useAppSelector} from "../../hooks";
+import {useAppSelector} from '../../hooks';
 
 
 function AddReviewScreen() {

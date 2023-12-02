@@ -3,11 +3,11 @@ import MainScreen from '../../pages/main-screen/main-screen.tsx';
 import SignInScreen from '../../pages/sign-in-screen/sign-in-screen.tsx';
 import {AppRoute, AuthorizationStatus} from '../../consts.ts';
 import NotFoundError from '../errors/not-found-error.tsx';
-import PlayerScreen from "../../pages/player-screen/player-screen.tsx";
-import AddReviewScreen from "../../pages/add-review-screen/add-review-screen.tsx";
-import MoviePageScreen from "../../pages/movie-page-screen/movie-page-screen.tsx";
-import PrivateRoute from "../private-route/private-route.tsx";
-import MyListScreen from "../../pages/my-list-screen/my-list-screen.tsx";
+import PlayerScreen from '../../pages/player-screen/player-screen.tsx';
+import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx';
+import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
+import PrivateRoute from '../private-route/private-route.tsx';
+import MyListScreen from '../../pages/my-list-screen/my-list-screen.tsx';
 
 
 function App() {

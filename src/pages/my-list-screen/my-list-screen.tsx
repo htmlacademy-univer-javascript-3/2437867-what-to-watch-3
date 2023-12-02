@@ -2,7 +2,7 @@ import Footer from '../../components/footer/footer.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
-import {useAppSelector} from "../../hooks";
+import {useAppSelector} from '../../hooks';
 
 
 function MyListScreen() {

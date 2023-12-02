@@ -1,4 +1,4 @@
-import {Film} from "../../types/film.ts";
+import {Film} from '../../types/film.ts';
 
 type MovieOverviewProps = {
   film: Film;

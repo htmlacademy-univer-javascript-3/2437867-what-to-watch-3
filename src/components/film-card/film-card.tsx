@@ -4,10 +4,10 @@ import VideoPlayer from '../video-player/video-player.tsx';
 import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import {resetShowMore} from '../../store/action.ts';
-import {FilmShortInfo} from "../../types/film.ts";
+import {FilmShortInfo} from '../../types/film.ts';
 
 export type FilmCardProps = {
-  film: FilmShortInfo
+  film: FilmShortInfo;
 }
 
 function FilmCard({film}: FilmCardProps) {

@@ -32,7 +32,7 @@ function MainScreen() {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img src={promoFilm?.posterImage} alt={promoFilm?.backgroundImage} width="218"
-                   height="327"
+                height="327"
               />
             </div>
 

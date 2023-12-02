@@ -1,13 +1,13 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {AppDispatch, State} from "../types/state.ts";
-import {AxiosInstance} from "axios";
-import { FilmPromo, Films} from "../types/film.ts";
-import {loadFilms, setLoadingStatus, setPromoFilm} from "./action.ts";
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {AppDispatch, State} from '../types/state.ts';
+import {AxiosInstance} from 'axios';
+import { FilmPromo, Films} from '../types/film.ts';
+import {loadFilms, setLoadingStatus, setPromoFilm} from './action.ts';
 
 export const fetchAllFilmsAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
 }>(
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
@@ -20,9 +20,9 @@ export const fetchAllFilmsAction = createAsyncThunk<void, undefined, {
 
 
 export const fetchPromoFilmAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
 }>(
   'data/fetchPromo',
   async (_arg, {dispatch, extra: api}) => {
