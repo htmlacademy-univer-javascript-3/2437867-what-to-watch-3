@@ -1,6 +1,6 @@
 import FilmCard from '../film-card/film-card.tsx';
-import {Films} from '../../types/types.ts';
 import {useAppSelector} from '../../hooks';
+import {Films} from '../../types/film.ts';
 
 type FilmsContainerProps = {
   films: Films;
@@ -11,9 +11,7 @@ function FilmsContainer(props: FilmsContainerProps) {
   return (
     <div className="catalog__films-list">
       {props.films.slice(0, filmsCount).map((film) => (
-        <FilmCard key={film.id} id={film.id} posterSrc={film.posterSrc} posterAlt={film.posterAlt}
-          title={film.title} videoLink={film.video}
-        />))}
+        <FilmCard key={film.id} film={film}/>))}
     </div>
   );
 }
