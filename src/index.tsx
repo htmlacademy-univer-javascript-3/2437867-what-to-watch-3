@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app.tsx';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import {fetchAllFilmsAction, fetchPromoFilmAction} from './store/api-actions.ts';
+import {checkAuthAction, fetchAllFilmsAction, fetchPromoFilmAction} from './store/api-actions.ts';
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,10 +13,12 @@ const root = ReactDOM.createRoot(
 
 store.dispatch(fetchAllFilmsAction());
 store.dispatch(fetchPromoFilmAction());
+store.dispatch(checkAuthAction());
 
 root.render(
   <Provider store={store}>
     <React.StrictMode>
+      <ToastContainer/>
       <App/>
     </React.StrictMode>
   </Provider>

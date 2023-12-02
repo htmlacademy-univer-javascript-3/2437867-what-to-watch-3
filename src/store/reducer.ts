@@ -1,14 +1,14 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeGenre,
-  getFilms,
-  loadFilms,
+  getFilms, getUser,
+  loadFilms, requireAuthorization,
   resetShowMore,
   setLoadingStatus,
   setPromoFilm,
   showMoreFilms
 } from './action.ts';
-import {INITIAL_FILMS_COUNT, INITIAL_GENRE} from '../consts.ts';
+import {AuthorizationStatus, INITIAL_FILMS_COUNT, INITIAL_GENRE} from '../consts.ts';
 import {StoreState} from '../types/store-state.ts';
 
 const initialState : StoreState = {
@@ -20,6 +20,8 @@ const initialState : StoreState = {
   filmsByGenre: [],
   filmsCount: INITIAL_FILMS_COUNT,
   availableGenres: [],
+  authorizationStatus: AuthorizationStatus.Unknown,
+  user: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -48,5 +50,11 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setPromoFilm, (state, action) => {
       state.promoFilm = action.payload;
-    });
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
+    })
+    .addCase(getUser, (state, action) => {
+      state.user = action.payload;
+    })
 });

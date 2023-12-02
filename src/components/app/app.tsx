@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import MainScreen from '../../pages/main-screen/main-screen.tsx';
 import SignInScreen from '../../pages/sign-in-screen/sign-in-screen.tsx';
 import {AppRoute, AuthorizationStatus} from '../../consts.ts';
@@ -8,11 +8,21 @@ import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import MyListScreen from '../../pages/my-list-screen/my-list-screen.tsx';
+import {useAppSelector} from "../../hooks";
+import Spinner from "../spinner/spinner.tsx";
+import HistoryRouter from "../history-route/history-route.tsx";
+import browserHistory from "../../browser-history.ts";
 
 
 function App() {
+  const isLoading = useAppSelector((state) => state.isLoading);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isLoading)
+    return (<Spinner/>)
+
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route path={AppRoute.Main} element={
           <MainScreen/>
@@ -21,7 +31,7 @@ function App() {
         <Route path={AppRoute.Login} element={<SignInScreen/>}/>
         <Route path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyListScreen/>
             </PrivateRoute>
           }
@@ -31,7 +41,7 @@ function App() {
         <Route path={`${AppRoute.Player }/:id`} element={<PlayerScreen/>}/>
         <Route path={AppRoute.NotFound} element={<NotFoundError/>}/>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
