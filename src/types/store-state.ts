@@ -1,6 +1,6 @@
 import {Film, FilmPromo, Films} from './film.ts';
-import {AuthorizationStatus} from "../consts.ts";
-import {UserData} from "./user-data.ts";
+import {AuthorizationStatus} from '../consts.ts';
+import {UserData} from './user-data.ts';
 
 export type StoreState = {
   selectedGenre: string;

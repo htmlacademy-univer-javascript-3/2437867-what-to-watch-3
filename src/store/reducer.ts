@@ -56,5 +56,5 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getUser, (state, action) => {
       state.user = action.payload;
-    })
+    });
 });

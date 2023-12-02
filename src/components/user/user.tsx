@@ -1,7 +1,7 @@
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {logoutAction} from "../../store/api-actions.ts";
-import {Link} from "react-router-dom";
-import {AppRoute, AuthorizationStatus} from "../../consts.ts";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {logoutAction} from '../../store/api-actions.ts';
+import {Link} from 'react-router-dom';
+import {AppRoute, AuthorizationStatus} from '../../consts.ts';
 
 function User() {
   const dispatch = useAppDispatch();
@@ -23,7 +23,9 @@ function User() {
             onClick={(evt) => {
               evt.preventDefault();
               dispatch(logoutAction());
-            }}>Sign out</Link>
+            }}
+          >Sign out
+          </Link>
         </li>
       </ul>
     );

@@ -3,10 +3,10 @@ import {AppDispatch, State} from '../types/state.ts';
 import {AxiosInstance} from 'axios';
 import {FilmPromo, Films} from '../types/film.ts';
 import {loadFilms, redirectToRoute, requireAuthorization, setLoadingStatus, setPromoFilm} from './action.ts';
-import {AppRoute, AuthorizationStatus} from "../consts.ts";
-import {dropToken, saveToken} from "../services/token.ts";
-import {AuthData} from "../types/auth-data.ts";
-import {UserData} from "../types/user-data.ts";
+import {AppRoute, AuthorizationStatus} from '../consts.ts';
+import {dropToken, saveToken} from '../services/token.ts';
+import {AuthData} from '../types/auth-data.ts';
+import {UserData} from '../types/user-data.ts';
 
 export const fetchAllFilmsAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

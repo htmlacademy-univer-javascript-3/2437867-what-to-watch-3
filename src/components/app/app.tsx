@@ -8,18 +8,19 @@ import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import MyListScreen from '../../pages/my-list-screen/my-list-screen.tsx';
-import {useAppSelector} from "../../hooks";
-import Spinner from "../spinner/spinner.tsx";
-import HistoryRouter from "../history-route/history-route.tsx";
-import browserHistory from "../../browser-history.ts";
+import {useAppSelector} from '../../hooks';
+import Spinner from '../spinner/spinner.tsx';
+import HistoryRouter from '../history-route/history-route.tsx';
+import browserHistory from '../../browser-history.ts';
 
 
 function App() {
   const isLoading = useAppSelector((state) => state.isLoading);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
-  if (authorizationStatus === AuthorizationStatus.Unknown || isLoading)
-    return (<Spinner/>)
+  if (authorizationStatus === AuthorizationStatus.Unknown || isLoading) {
+    return (<Spinner/>);
+  }
 
   return (
     <HistoryRouter history={browserHistory}>

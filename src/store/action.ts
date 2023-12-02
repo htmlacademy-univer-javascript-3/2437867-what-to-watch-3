@@ -1,7 +1,7 @@
 import {createAction} from '@reduxjs/toolkit';
 import {FilmPromo, Films} from '../types/film.ts';
-import {AppRoute, AuthorizationStatus} from "../consts.ts";
-import {UserData} from "../types/user-data.ts";
+import {AppRoute, AuthorizationStatus} from '../consts.ts';
+import {UserData} from '../types/user-data.ts';
 
 export const getFilms = createAction('films/getFilms');
 export const changeGenre = createAction('films/changeGenre', (genre: string) => ({

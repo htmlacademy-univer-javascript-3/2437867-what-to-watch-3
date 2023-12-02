@@ -1,6 +1,6 @@
-import {FormEvent, useRef} from "react";
-import {useAppDispatch} from "../../hooks";
-import {loginAction} from "../../store/api-actions.ts";
+import {FormEvent, useRef} from 'react';
+import {useAppDispatch} from '../../hooks';
+import {loginAction} from '../../store/api-actions.ts';
 
 function SignInForm() {
   const emailRef = useRef<HTMLInputElement | null>(null);
