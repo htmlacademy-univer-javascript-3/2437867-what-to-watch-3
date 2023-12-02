@@ -1,35 +1,25 @@
 import Footer from '../../components/footer/footer.tsx';
-import {catalogGenresTypes} from '../../consts.ts';
 import CatalogGenres from '../../components/catalog-genres/catalog-genres.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
-import {Film} from '../../types/types.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {getFilms} from '../../store/action.ts';
 import ShowMore from '../../components/show-more/show-more.tsx';
 
-type MainScreenProps = {
-  backgroundSrc: string;
-  backgroundAlt: string;
-  mainFilm: Film;
-  myListFilmsCount: number;
-}
-
-function MainScreen(props: MainScreenProps) {
+function MainScreen() {
   const dispatch = useAppDispatch();
-  const mainFilm = props.mainFilm;
-  const {films, selectedGenre, filmsCount} = useAppSelector((state) => state);
-
+  const {filmsByGenre, selectedGenre, filmsCount, promoFilm} = useAppSelector((state) => state);
   useEffect(() => {
     dispatch(getFilms());
   }, [selectedGenre, dispatch]);
+
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.backgroundSrc} alt={props.backgroundAlt}/>
+          <img src={promoFilm?.backgroundImage} alt={promoFilm?.backgroundImage}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -41,16 +31,16 @@ function MainScreen(props: MainScreenProps) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={mainFilm.posterSrc} alt={mainFilm.posterAlt} width="218"
-                height="327"
+              <img src={promoFilm?.posterImage} alt={promoFilm?.backgroundImage} width="218"
+                   height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{mainFilm.title}</h2>
+              <h2 className="film-card__title">{promoFilm?.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{mainFilm.genre}</span>
-                <span className="film-card__year">{mainFilm.year}</span>
+                <span className="film-card__genre">{promoFilm?.genre}</span>
+                <span className="film-card__year">{promoFilm?.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -65,7 +55,7 @@ function MainScreen(props: MainScreenProps) {
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">{props.myListFilmsCount}</span>
+                  <span className="film-card__count">{9}</span>
                 </button>
               </div>
             </div>
@@ -75,9 +65,9 @@ function MainScreen(props: MainScreenProps) {
 
       <div className="page-content">
         <section className="catalog">
-          <CatalogGenres genres={catalogGenresTypes}/>
-          <FilmsContainer films={films}/>
-          {films.length >= filmsCount && <ShowMore/>}
+          <CatalogGenres/>
+          <FilmsContainer films={filmsByGenre}/>
+          {filmsByGenre.length >= filmsCount && <ShowMore/>}
         </section>
 
         <Footer/>

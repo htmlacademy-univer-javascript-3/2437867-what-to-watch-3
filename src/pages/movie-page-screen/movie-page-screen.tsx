@@ -3,26 +3,19 @@ import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
-import {Films} from '../../types/types.ts';
 import {AppRoute} from '../../consts.ts';
-import Tabs from '../../components/tabs/tabs.tsx';
+import {useAppSelector} from "../../hooks";
 
-type MoviePageScreenProps = {
-  backgroundSrc: string;
-  backgroundAlt: string;
-  films: Films;
-  myListFilmsCount: number;
-}
-
-function MoviePageScreen(props: MoviePageScreenProps) {
+function MoviePageScreen() {
   const params = useParams();
-  const film = props.films.filter((f) => f.id === params.id)[0];
+  const films = useAppSelector((state) => state.films);
+  const film = films.filter((f) => f.id === params.id)[0];
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={props.backgroundSrc} alt={props.backgroundAlt}/>
+            <img src={film.previewImage} alt={film.name}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -35,10 +28,10 @@ function MoviePageScreen(props: MoviePageScreenProps) {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.title}</h2>
+              <h2 className="film-card__title">{film.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.year}</span>
+                <span className="film-card__year">{film.genre}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -53,7 +46,7 @@ function MoviePageScreen(props: MoviePageScreenProps) {
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">{props.myListFilmsCount}</span>
+                  <span className="film-card__count">{9}</span>
                 </button>
                 <Link to={`${AppRoute.Movie }/${film.id}${ AppRoute.Review}`} className="btn film-card__button">Add review</Link>
               </div>
@@ -64,11 +57,11 @@ function MoviePageScreen(props: MoviePageScreenProps) {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={film.posterSrc} alt={film.posterAlt} width="218"
+              <img src={film.previewImage} alt={film.name} width="218"
                 height="327"
               />
             </div>
-            <Tabs film={film}/>
+            {/*<Tabs film={film}/>*/}
           </div>
         </div>
       </section>
@@ -77,7 +70,7 @@ function MoviePageScreen(props: MoviePageScreenProps) {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsContainer films={props.films}/>
+          <FilmsContainer films={films}/>
         </section>
 
         <Footer/>

@@ -1,10 +1,10 @@
 import {Tab} from '../../consts.ts';
 import {useState} from 'react';
 import cn from 'classnames';
-import {Film} from '../../types/types.ts';
 import MovieOverview from '../movie/movie-overview.tsx';
 import MovieDetails from '../movie/movie-details.tsx';
 import MovieReviews from '../movie/movie-reviews.tsx';
+import {Film} from "../../types/film.ts";
 
 type TabsProps = {
   film: Film;

@@ -1,4 +1,3 @@
-export const catalogGenresTypes = ['All genres', 'Comedies', 'Crime', 'Documentary', 'Dramas', 'Horror', 'Kids & Family', 'Romance', 'Sci-Fi', 'Thrillers'];
 export const INITIAL_GENRE = 'All genres';
 export const INITIAL_FILMS_COUNT = 8;
 
