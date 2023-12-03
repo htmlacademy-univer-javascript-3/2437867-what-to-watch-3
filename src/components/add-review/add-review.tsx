@@ -1,6 +1,6 @@
 import {FormEvent, useState} from 'react';
-import {fetchAddReviewAction} from "../../store/api-actions.ts";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {fetchAddReviewAction} from '../../store/api-actions.ts';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 
 function AddReview() {
   const [text, setText] = useState<string>('');
@@ -10,7 +10,7 @@ function AddReview() {
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    dispatch(fetchAddReviewAction({comment: text, filmId: film?.id, rating: rating}))
+    dispatch(fetchAddReviewAction({comment: text, filmId: film?.id, rating: rating}));
   };
 
   return (

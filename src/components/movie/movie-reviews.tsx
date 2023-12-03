@@ -1,12 +1,12 @@
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {useEffect} from "react";
-import {fetchReviewsAction} from "../../store/api-actions.ts";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useEffect} from 'react';
+import {fetchReviewsAction} from '../../store/api-actions.ts';
 
 function MovieReviews() {
   const {selectedFilm, reviews} = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchReviewsAction(selectedFilm?.id))
+    dispatch(fetchReviewsAction(selectedFilm?.id));
   }, [dispatch, selectedFilm]);
 
   return (

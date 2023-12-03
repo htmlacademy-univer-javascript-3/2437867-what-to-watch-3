@@ -17,7 +17,7 @@ import {AppRoute, AuthorizationStatus} from '../consts.ts';
 import {dropToken, saveToken} from '../services/token.ts';
 import {AuthData} from '../types/auth-data.ts';
 import {UserData} from '../types/user-data.ts';
-import {Review, Reviews} from "../types/review.ts";
+import {Review, Reviews} from '../types/review.ts';
 
 export const fetchAllFilmsAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -41,6 +41,9 @@ export const fetchFilmAction = createAsyncThunk<void, string | undefined, {
   'data/fetchFilm',
   async (filmId, {dispatch, extra: api}) => {
     try {
+      if (filmId === undefined) {
+        return;
+      }
       const {data} = await api.get<Film>(`/films/${filmId}`);
       dispatch(loadFilm(data));
     } catch {
@@ -57,6 +60,9 @@ export const fetchSimilarFilmsAction = createAsyncThunk<void, string | undefined
   'data/fetchSimilarFilms',
   async (filmId, {dispatch, extra: api}) => {
     try {
+      if (filmId === undefined) {
+        return;
+      }
       const {data} = await api.get<Films>(`/films/${filmId}/similar`);
       dispatch(loadSimilarFilms(data));
     } catch {
@@ -74,9 +80,8 @@ export const fetchFavoriteFilmsAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     try {
       dispatch(setLoadingStatus(true));
-      const {data} = await api.get<Films>(`/favorite`);
+      const {data} = await api.get<Films>('/favorite');
       dispatch(loadFavoriteFilms(data));
-    } catch {
     } finally {
       dispatch(setLoadingStatus(false));
     }
@@ -84,26 +89,32 @@ export const fetchFavoriteFilmsAction = createAsyncThunk<void, undefined, {
 );
 
 export const fetchReviewsAction = createAsyncThunk<void, string | undefined, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
 }>(
   'data/fetchReviews',
   async (filmId, {dispatch, extra: api}) => {
+    if (filmId === undefined) {
+      return;
+    }
     const {data} = await api.get<Reviews>(`/comments/${filmId}`);
     dispatch(loadReviews(data));
   },
 );
 
-export const fetchAddReviewAction = createAsyncThunk<void, { filmId: string | undefined, comment : string, rating : number}, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
+export const fetchAddReviewAction = createAsyncThunk<void, { filmId: string | undefined; comment : string; rating : number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
 }>(
   'data/fetchAddReview',
   async ({ filmId, comment, rating }, { dispatch, extra: api }) => {
+    if (filmId === undefined) {
+      return;
+    }
     await api.post<Review>(`/comments/${filmId}`, {comment, rating});
-    dispatch(redirectToRoute(AppRoute.Movie + `/${filmId}`));
+    dispatch(redirectToRoute(`${AppRoute.Movie }/${filmId}`));
   },
 );
 

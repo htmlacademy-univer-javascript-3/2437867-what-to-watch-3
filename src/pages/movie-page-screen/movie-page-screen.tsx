@@ -5,10 +5,10 @@ import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {AppRoute, AuthorizationStatus} from '../../consts.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {useEffect} from "react";
-import {fetchFilmAction, fetchSimilarFilmsAction} from "../../store/api-actions.ts";
-import NotFoundError from "../../components/errors/not-found-error.tsx";
-import Tabs from "../../components/tabs/tabs.tsx";
+import {useEffect} from 'react';
+import {fetchFilmAction, fetchSimilarFilmsAction} from '../../store/api-actions.ts';
+import NotFoundError from '../../components/errors/not-found-error.tsx';
+import Tabs from '../../components/tabs/tabs.tsx';
 
 function MoviePageScreen() {
   const params = useParams();
@@ -25,8 +25,9 @@ function MoviePageScreen() {
     dispatch(fetchSimilarFilmsAction(params.id));
   }, [dispatch, params]);
 
-  if (film === null)
+  if (film === null) {
     return (<NotFoundError/>);
+  }
 
   return (
     <>
@@ -68,8 +69,8 @@ function MoviePageScreen() {
                 </button>
                 {status === AuthorizationStatus.Auth &&
                   <Link to={`${AppRoute.Movie}/${film.id}${AppRoute.Review}`} className="btn film-card__button">Add
-                    review</Link>
-                }
+                    review
+                  </Link>}
               </div>
             </div>
           </div>
@@ -79,7 +80,7 @@ function MoviePageScreen() {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img src={film.posterImage} alt={film.name} width="218"
-                   height="327"
+                height="327"
               />
             </div>
             <Tabs film={film}/>

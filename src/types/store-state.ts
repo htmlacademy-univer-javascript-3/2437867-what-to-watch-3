@@ -1,7 +1,7 @@
 import {Film, FilmPromo, Films} from './film.ts';
 import {AuthorizationStatus} from '../consts.ts';
 import {UserData} from './user-data.ts';
-import {Reviews} from "./review.ts";
+import {Reviews} from './review.ts';
 
 export type StoreState = {
   selectedGenre: string;
