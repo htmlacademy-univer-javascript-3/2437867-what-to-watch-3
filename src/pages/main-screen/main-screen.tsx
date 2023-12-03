@@ -10,7 +10,7 @@ import ShowMore from '../../components/show-more/show-more.tsx';
 
 function MainScreen() {
   const dispatch = useAppDispatch();
-  const {filmsByGenre, selectedGenre, filmsCount, promoFilm} = useAppSelector((state) => state);
+  const {filmsByGenre, selectedGenre, filmsCount, promoFilm, favoriteFilmsCount} = useAppSelector((state) => state);
   useEffect(() => {
     dispatch(getFilms());
   }, [selectedGenre, dispatch]);
@@ -55,7 +55,7 @@ function MainScreen() {
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">{9}</span>
+                  <span className="film-card__count">{favoriteFilmsCount}</span>
                 </button>
               </div>
             </div>
