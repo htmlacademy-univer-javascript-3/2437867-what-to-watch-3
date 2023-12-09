@@ -25,3 +25,9 @@ export enum Tab {
   Details = 'Details',
   Reviews = 'Reviews',
 }
+
+export enum NameSpace {
+  User = 'USER',
+  Films = 'FILMS',
+  Review = 'REVIEW',
+}

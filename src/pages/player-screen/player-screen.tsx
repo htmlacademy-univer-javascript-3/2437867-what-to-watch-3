@@ -1,16 +1,20 @@
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
 import {useAppSelector} from '../../hooks';
+import {getFilm} from "../../store/films-process/selectors.ts";
+import NotFoundError from "../../components/errors/not-found-error.tsx";
 
 function PlayerScreen() {
-  const params = useParams();
+  //const params = useParams();
   const navigate = useNavigate();
-  const films = useAppSelector((state) => state.films);
-  const film = films.filter((f) => f.id === params.id)[0];
+  const film = useAppSelector(getFilm);
+
+  if (film === null) return (<NotFoundError/>)
+
 
   return (
     <div className="player">
-      <video src={film.previewVideoLink} className="player__video" poster={film.previewImage}></video>
+      <video src={film.videoLink} className="player__video" poster={film.posterImage}></video>
 
       <button type="button" className="player__exit" onClick={() => navigate(`${AppRoute.Movie }/${film.id}`)}>Exit</button>
 

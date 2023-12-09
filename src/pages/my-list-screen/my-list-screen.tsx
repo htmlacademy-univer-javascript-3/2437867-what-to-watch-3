@@ -3,10 +3,11 @@ import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
 import {useAppSelector} from '../../hooks';
+import {getFavoriteFilms} from "../../store/films-process/selectors.ts";
 
 
 function MyListScreen() {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFavoriteFilms);
 
   return (
     <div className="user-page">
