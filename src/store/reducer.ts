@@ -1,8 +1,8 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeGenre,
-  getFilms, getUser,
-  loadFilms, requireAuthorization,
+  getFilms, getUser, loadFavoriteFilms, loadFilm,
+  loadFilms, loadReviews, loadSimilarFilms, requireAuthorization,
   resetShowMore,
   setLoadingStatus,
   setPromoFilm,
@@ -13,15 +13,19 @@ import {StoreState} from '../types/store-state.ts';
 
 const initialState : StoreState = {
   isLoading: false,
-  promoFilm: null,
-  selectedFilm: null,
-  selectedGenre: INITIAL_GENRE,
   films: [],
   filmsByGenre: [],
+  promoFilm: null,
+  selectedFilm: null,
+  similarFilms: [],
+  favoriteFilms: [],
+  favoriteFilmsCount: 0,
   filmsCount: INITIAL_FILMS_COUNT,
+  selectedGenre: INITIAL_GENRE,
   availableGenres: [],
   authorizationStatus: AuthorizationStatus.Unknown,
   user: null,
+  reviews: [],
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -44,6 +48,19 @@ export const reducer = createReducer(initialState, (builder) => {
       state.films = action.payload;
       state.filmsByGenre = action.payload;
       state.availableGenres = [INITIAL_GENRE, ...new Set(action.payload.map((x) => x.genre))];
+    })
+    .addCase(loadFilm, (state, action) => {
+      state.selectedFilm = action.payload;
+    })
+    .addCase(loadSimilarFilms, (state, action) => {
+      state.similarFilms = action.payload;
+    })
+    .addCase(loadFavoriteFilms, (state, action) => {
+      state.favoriteFilms = action.payload;
+      state.favoriteFilmsCount = action.payload.length;
+    })
+    .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(setLoadingStatus, (state, action) => {
       state.isLoading = action.payload;

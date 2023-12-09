@@ -20,7 +20,7 @@ function Tabs(props: TabsProps) {
       case Tab.Overview:
         return <MovieOverview film={props.film}/>;
       case Tab.Reviews:
-        return <MovieReviews reviews={[]}/>;
+        return <MovieReviews/>;
     }
   };
 
