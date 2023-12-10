@@ -1,21 +1,26 @@
 import User from '../../components/user/user.tsx';
 import Logo from '../../components/logo/logo.tsx';
 import AddReview from '../../components/add-review/add-review.tsx';
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
 import {useAppSelector} from '../../hooks';
+import {getFilm} from '../../store/films-process/selectors.ts';
+import NotFoundError from '../../components/errors/not-found-error.tsx';
 
 
 function AddReviewScreen() {
-  const params = useParams();
-  const films = useAppSelector((state) => state.films);
-  const film = films.filter((f) => f.id === params.id)[0];
+  //const params = useParams();
+  const film = useAppSelector(getFilm);
+
+  if (film === null) {
+    return (<NotFoundError/>);
+  }
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={film.previewImage} alt={film.name}/>
+          <img src={film.posterImage} alt={film.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -38,7 +43,7 @@ function AddReviewScreen() {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={film.previewImage} alt={film.name} width="218"
+          <img src={film.posterImage} alt={film.name} width="218"
             height="327"
           />
         </div>
