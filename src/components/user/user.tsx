@@ -1,11 +1,12 @@
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {logoutAction} from '../../store/api-actions.ts';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../consts.ts';
 import {getAuthorizationStatus, getUser} from '../../store/user-process/selectors.ts';
 
 function User() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const user = useAppSelector(getUser);
 
@@ -14,7 +15,7 @@ function User() {
       <ul className="user-block">
         <li className="user-block__item">
           <div className="user-block__avatar">
-            <img src={user?.avatarUrl} alt="User avatar" width="63" height="63"/>
+            <img src={user?.avatarUrl} alt="User avatar" width="63" height="63" onClick={() => navigate(AppRoute.MyList)}/>
           </div>
         </li>
         <li className="user-block__item">
