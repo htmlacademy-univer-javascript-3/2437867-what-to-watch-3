@@ -1,6 +1,6 @@
-import {Film, FilmPromo} from "../../types/film.ts";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../consts.ts";
+import {Film, FilmPromo} from '../../types/film.ts';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../consts.ts';
 
 type MoviePlayProps = {
   film: Film | FilmPromo;

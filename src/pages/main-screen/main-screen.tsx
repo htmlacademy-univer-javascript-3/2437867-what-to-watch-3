@@ -18,8 +18,8 @@ import {
 } from '../../store/films-process/selectors.ts';
 import NotFoundError from '../../components/errors/not-found-error.tsx';
 import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
-import MovieFavoriteList from "../../components/movie/movie-favorite-list.tsx";
-import MoviePlay from "../../components/movie/movie-play.tsx";
+import MovieFavoriteList from '../../components/movie/movie-favorite-list.tsx';
+import MoviePlay from '../../components/movie/movie-play.tsx';
 
 function MainScreen() {
   const dispatch = useAppDispatch();

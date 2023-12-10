@@ -80,15 +80,13 @@ export const filmsProcess = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchChangeFavoriteFilmsAction.fulfilled, (state, action) => {
-        if (state.selectedFilm?.id === action.payload.id)
-        {
-          state.selectedFilm.isFavorite = action.payload.isFavorite
+        if (state.selectedFilm?.id === action.payload.id) {
+          state.selectedFilm.isFavorite = action.payload.isFavorite;
         }
-        if (state.promoFilm?.id === action.payload.id)
-        {
-          state.promoFilm.isFavorite = action.payload.isFavorite
+        if (state.promoFilm?.id === action.payload.id) {
+          state.promoFilm.isFavorite = action.payload.isFavorite;
         }
-      })
+      });
   }
 });
 

@@ -5,7 +5,7 @@ import {getFilm, getLoadingStatus} from '../../store/films-process/selectors.ts'
 import NotFoundError from '../../components/errors/not-found-error.tsx';
 import {useEffect, useRef, useState} from 'react';
 import {fetchFilmAction} from '../../store/api-actions.ts';
-import Spinner from "../../components/spinner/spinner.tsx";
+import Spinner from '../../components/spinner/spinner.tsx';
 
 function PlayerScreen() {
   const params = useParams();
@@ -29,7 +29,7 @@ function PlayerScreen() {
         videoRef.current.load();
       }
     }
-  }, [dispatch, params]);
+  }, [dispatch, params, isPlaying]);
 
   if (isLoading) {
     return (<Spinner/>);
@@ -48,25 +48,25 @@ function PlayerScreen() {
       }
       setIsPlaying(!isPlaying);
     }
-  }
+  };
 
   const handleFullScreen = () => {
     if (videoRef.current) {
       videoRef.current.requestFullscreen();
     }
-  }
+  };
 
   const handleUpdateProgress = () => {
     if (videoRef.current) {
       setTimeLeft(Math.round(videoRef.current?.duration - videoRef.current?.currentTime));
       setProgress((videoRef.current?.currentTime * 100) / videoRef.current?.duration);
     }
-  }
+  };
 
   const formatTime = (seconds: number) => {
-    let hours = Math.floor(seconds / 3600);
-    let minutes = Math.floor((seconds - (hours * 3600)) / 60);
-    let sec = seconds - (hours * 3600) - (minutes * 60);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds - (hours * 3600)) / 60);
+    const sec = seconds - (hours * 3600) - (minutes * 60);
 
     if (hours > 0) {
       return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
@@ -74,21 +74,22 @@ function PlayerScreen() {
       return `${minutes.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     }
 
-  }
+  };
 
   return (
     <div className="player">
       {isLoadingFilm && <Spinner/>}
       <video src={film.videoLink}
-             className="player__video"
-             poster={film.posterImage}
-             ref={videoRef}
-             onDoubleClick={handleFullScreen}
-             onTimeUpdate={handleUpdateProgress}
+        className="player__video"
+        poster={film.posterImage}
+        ref={videoRef}
+        onDoubleClick={handleFullScreen}
+        onTimeUpdate={handleUpdateProgress}
       />
 
       <button type="button" className="player__exit"
-              onClick={() => navigate(`${AppRoute.Movie}/${film.id}`)}>Exit
+        onClick={() => navigate(`${AppRoute.Movie}/${film.id}`)}
+      >Exit
       </button>
 
       <div className="player__controls">

@@ -1,8 +1,8 @@
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {getFavoriteFilmsCount} from "../../store/films-process/selectors.ts";
-import {Film, FilmPromo} from "../../types/film.ts";
-import {useEffect} from "react";
-import {fetchChangeFavoriteFilmsAction, fetchFavoriteFilmsAction} from "../../store/api-actions.ts";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getFavoriteFilmsCount} from '../../store/films-process/selectors.ts';
+import {Film, FilmPromo} from '../../types/film.ts';
+import {useEffect} from 'react';
+import {fetchChangeFavoriteFilmsAction, fetchFavoriteFilmsAction} from '../../store/api-actions.ts';
 
 type MovieFavoriteListProps = {
   film: Film | FilmPromo;
@@ -17,9 +17,14 @@ function MovieFavoriteList(props: MovieFavoriteListProps) {
     dispatch(fetchFavoriteFilmsAction());
   }, [dispatch, film.isFavorite]);
 
+  const handleChangeFilmStatus = () => {
+    dispatch(fetchChangeFavoriteFilmsAction({filmId: film.id, status: Number(!film.isFavorite)}));
+  };
+
   return (
     <button className="btn btn--list film-card__button" type="button"
-            onClick={() => dispatch(fetchChangeFavoriteFilmsAction({filmId: film.id, status: Number(!film.isFavorite)}))}>
+      onClick={handleChangeFilmStatus}
+    >
       <svg viewBox="0 0 19 20" width="19" height="20">
         {film.isFavorite ? <use xlinkHref="#in-list"></use> : <use xlinkHref="#add"></use>}
       </svg>
