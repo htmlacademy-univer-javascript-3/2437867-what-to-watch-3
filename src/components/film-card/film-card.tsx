@@ -6,7 +6,7 @@ import {useAppDispatch} from '../../hooks';
 import {FilmShortInfo} from '../../types/film.ts';
 import {resetShowMore} from '../../store/films-process/films-process.ts';
 
-export type FilmCardProps = {
+type FilmCardProps = {
   film: FilmShortInfo;
 }
 

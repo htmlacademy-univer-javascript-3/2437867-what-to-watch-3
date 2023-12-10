@@ -10,7 +10,6 @@ import {AuthorizationStatus} from '../../consts.ts';
 import Spinner from '../../components/spinner/spinner.tsx';
 import {getFilms} from '../../store/films-process/films-process.ts';
 import {
-  getFavoriteFilmsCount,
   getFilmsByGenre,
   getFilmsCount,
   getGenre,
@@ -19,6 +18,8 @@ import {
 } from '../../store/films-process/selectors.ts';
 import NotFoundError from '../../components/errors/not-found-error.tsx';
 import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
+import MovieFavoriteList from "../../components/movie/movie-favorite-list.tsx";
+import MoviePlay from "../../components/movie/movie-play.tsx";
 
 function MainScreen() {
   const dispatch = useAppDispatch();
@@ -26,7 +27,6 @@ function MainScreen() {
   const selectedGenre = useAppSelector(getGenre);
   const filmsCount = useAppSelector(getFilmsCount);
   const promoFilm = useAppSelector(getPromoFilm);
-  const favoriteFilmsCount = useAppSelector(getFavoriteFilmsCount);
   const isLoading = useAppSelector(getLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
@@ -71,19 +71,8 @@ function MainScreen() {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">{favoriteFilmsCount}</span>
-                </button>
+                <MoviePlay film={promoFilm}/>
+                <MovieFavoriteList film={promoFilm}/>
               </div>
             </div>
           </div>
