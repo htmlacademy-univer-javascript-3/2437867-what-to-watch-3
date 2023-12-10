@@ -1,15 +1,26 @@
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
-import {useAppSelector} from '../../hooks';
-import {getFilm} from "../../store/films-process/selectors.ts";
-import NotFoundError from "../../components/errors/not-found-error.tsx";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {getFilm} from '../../store/films-process/selectors.ts';
+import NotFoundError from '../../components/errors/not-found-error.tsx';
+import {useEffect} from 'react';
+import {fetchFilmAction, fetchSimilarFilmsAction} from '../../store/api-actions.ts';
 
 function PlayerScreen() {
-  //const params = useParams();
+  const params = useParams();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const film = useAppSelector(getFilm);
 
-  if (film === null) return (<NotFoundError/>)
+  useEffect(() => {
+    dispatch(fetchFilmAction(params.id));
+    dispatch(fetchSimilarFilmsAction(params.id));
+  }, [dispatch, params]);
+
+  if (film === null) {
+    return (<NotFoundError/>);
+  }
 
 
   return (

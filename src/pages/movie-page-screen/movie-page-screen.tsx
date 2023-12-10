@@ -9,14 +9,14 @@ import {useEffect} from 'react';
 import {fetchFilmAction, fetchSimilarFilmsAction} from '../../store/api-actions.ts';
 import NotFoundError from '../../components/errors/not-found-error.tsx';
 import Tabs from '../../components/tabs/tabs.tsx';
-import Spinner from "../../components/spinner/spinner.tsx";
+import Spinner from '../../components/spinner/spinner.tsx';
 import {
   getFavoriteFilmsCount,
   getFilm,
   getLoadingStatus,
   getSimilarFilms
-} from "../../store/films-process/selectors.ts";
-import {getAuthorizationStatus} from "../../store/user-process/selectors.ts";
+} from '../../store/films-process/selectors.ts';
+import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
 
 function MoviePageScreen() {
   const params = useParams();

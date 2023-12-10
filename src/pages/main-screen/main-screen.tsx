@@ -6,9 +6,9 @@ import FilmsContainer from '../../components/films-container/films-container.tsx
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import ShowMore from '../../components/show-more/show-more.tsx';
-import {AuthorizationStatus} from "../../consts.ts";
-import Spinner from "../../components/spinner/spinner.tsx";
-import {getFilms} from "../../store/films-process/films-process.ts";
+import {AuthorizationStatus} from '../../consts.ts';
+import Spinner from '../../components/spinner/spinner.tsx';
+import {getFilms} from '../../store/films-process/films-process.ts';
 import {
   getFavoriteFilmsCount,
   getFilmsByGenre,
@@ -16,9 +16,9 @@ import {
   getGenre,
   getLoadingStatus,
   getPromoFilm
-} from "../../store/films-process/selectors.ts";
-import NotFoundError from "../../components/errors/not-found-error.tsx";
-import {getAuthorizationStatus} from "../../store/user-process/selectors.ts";
+} from '../../store/films-process/selectors.ts';
+import NotFoundError from '../../components/errors/not-found-error.tsx';
+import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
 
 function MainScreen() {
   const dispatch = useAppDispatch();
@@ -39,7 +39,7 @@ function MainScreen() {
   }
 
   if (promoFilm === null) {
-    return (<NotFoundError/>)
+    return (<NotFoundError/>);
   }
 
   return (

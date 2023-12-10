@@ -4,16 +4,17 @@ import AddReview from '../../components/add-review/add-review.tsx';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../consts.ts';
 import {useAppSelector} from '../../hooks';
-import {getFilm} from "../../store/films-process/selectors.ts";
-import NotFoundError from "../../components/errors/not-found-error.tsx";
+import {getFilm} from '../../store/films-process/selectors.ts';
+import NotFoundError from '../../components/errors/not-found-error.tsx';
 
 
 function AddReviewScreen() {
   //const params = useParams();
   const film = useAppSelector(getFilm);
 
-  if (film === null)
-    return (<NotFoundError/>)
+  if (film === null) {
+    return (<NotFoundError/>);
+  }
 
   return (
     <section className="film-card film-card--full">

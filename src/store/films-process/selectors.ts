@@ -1,6 +1,6 @@
-import {NameSpace} from "../../consts.ts";
-import {State} from "../../types/state.ts";
-import {Film, FilmPromo, Films} from "../../types/film.ts";
+import {NameSpace} from '../../consts.ts';
+import {State} from '../../types/state.ts';
+import {Film, FilmPromo, Films} from '../../types/film.ts';
 
 export const getLoadingStatus = (state: State): boolean => state[NameSpace.Films].isLoading;
 export const getFilm = (state: State): Film | null => state[NameSpace.Films].selectedFilm;

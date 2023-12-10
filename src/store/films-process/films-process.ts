@@ -1,11 +1,11 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {
   fetchAllFilmsAction, fetchFavoriteFilmsAction, fetchFilmAction, fetchPromoFilmAction, fetchSimilarFilmsAction,
-} from "../api-actions";
-import {INITIAL_FILMS_COUNT, INITIAL_GENRE, NameSpace} from "../../consts.ts";
-import {FilmsProcess} from "../../types/state.ts";
+} from '../api-actions';
+import {INITIAL_FILMS_COUNT, INITIAL_GENRE, NameSpace} from '../../consts.ts';
+import {FilmsProcess} from '../../types/state.ts';
 
-const initialState : FilmsProcess  = {
+const initialState : FilmsProcess = {
   isLoading: false,
   films: [],
   filmsByGenre: [],
@@ -77,7 +77,7 @@ export const filmsProcess = createSlice({
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
         state.isLoading = false;
-      })
+      });
   }
 });
 

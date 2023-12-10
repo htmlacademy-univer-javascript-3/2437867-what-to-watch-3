@@ -31,14 +31,16 @@ export const fetchFilmAction = createAsyncThunk<Film | null, string | undefined,
 }>(
   'data/fetchFilm',
   async (filmId, {dispatch, extra: api}) => {
+    if (filmId === undefined) {
+      return null;
+    }
+    const {data, status} = await api.get<Film>(`/films/${filmId}`);
+    if (status === 404) {
+      dispatch(redirectToRoute(AppRoute.NotFound));
+      return null;
+    }
 
-      const {data, status} = await api.get<Film>(`/films/${filmId}`);
-      if (status === 404) {
-        dispatch(redirectToRoute(AppRoute.NotFound));
-        return null;
-      }
-
-      return data;
+    return data;
   },
 );
 
@@ -49,12 +51,15 @@ export const fetchSimilarFilmsAction = createAsyncThunk<Films, string | undefine
 }>(
   'data/fetchSimilarFilms',
   async (filmId, {dispatch, extra: api}) => {
+    if (filmId === undefined) {
+      return [];
+    }
+    const {data, status} = await api.get<Films>(`/films/${filmId}/similar`);
+    if (status === 404) {
+      dispatch(redirectToRoute(AppRoute.NotFound));
+    }
 
-      const {data, status} = await api.get<Films>(`/films/${filmId}/similar`);
-      if (status === 404)
-        dispatch(redirectToRoute(AppRoute.NotFound));
-
-      return data;
+    return data;
   },
 );
 
@@ -78,6 +83,9 @@ export const fetchReviewsAction = createAsyncThunk<Reviews, string | undefined, 
 }>(
   'data/fetchReviews',
   async (filmId, {extra: api}) => {
+    if (filmId === undefined) {
+      return [];
+    }
     const {data} = await api.get<Reviews>(`/comments/${filmId}`);
 
     return data;
@@ -119,10 +127,10 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
 }>(
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
-      const {data} = await api.get<UserData>('/login');
-      dispatch(redirectToRoute(AppRoute.Main));
+    const {data} = await api.get<UserData>('/login');
+    dispatch(redirectToRoute(AppRoute.Main));
 
-      return data;
+    return data;
   },
 );
 

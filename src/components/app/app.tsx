@@ -8,15 +8,11 @@ import AddReviewScreen from '../../pages/add-review-screen/add-review-screen.tsx
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import MyListScreen from '../../pages/my-list-screen/my-list-screen.tsx';
-import {useAppSelector} from '../../hooks';
 import HistoryRouter from '../history-route/history-route.tsx';
 import browserHistory from '../../browser-history.ts';
-import {getAuthorizationStatus} from "../../store/user-process/selectors.ts";
 
 
 function App() {
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
-
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
@@ -27,7 +23,7 @@ function App() {
         <Route path={AppRoute.Login} element={<SignInScreen/>}/>
         <Route path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRoute>
               <MyListScreen/>
             </PrivateRoute>
           }

@@ -1,7 +1,7 @@
 import {FormEvent, useState} from 'react';
 import {fetchAddReviewAction} from '../../store/api-actions.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {getFilm} from "../../store/films-process/selectors.ts";
+import {getFilm} from '../../store/films-process/selectors.ts';
 
 function AddReview() {
   const [text, setText] = useState<string>('');

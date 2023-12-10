@@ -4,7 +4,7 @@ import VideoPlayer from '../video-player/video-player.tsx';
 import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import {FilmShortInfo} from '../../types/film.ts';
-import {resetShowMore} from "../../store/films-process/films-process.ts";
+import {resetShowMore} from '../../store/films-process/films-process.ts';
 
 export type FilmCardProps = {
   film: FilmShortInfo;

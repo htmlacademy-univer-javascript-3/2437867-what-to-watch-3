@@ -18,6 +18,7 @@ function SignInForm() {
       }));
     }
   };
+
   return (
     <div className="sign-in user-page__content">
       <form action="" className="sign-in__form" onSubmit={handleSubmit}>
