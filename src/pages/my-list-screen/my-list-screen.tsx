@@ -22,7 +22,7 @@ function MyListScreen() {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmsContainer films={films}/>
+        <FilmsContainer films={films} filmsCount={filmsCount}/>
       </section>
 
       <Footer/>
