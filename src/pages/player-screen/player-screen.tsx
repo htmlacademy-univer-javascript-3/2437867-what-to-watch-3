@@ -29,7 +29,7 @@ function PlayerScreen() {
         videoRef.current.load();
       }
     }
-  }, [dispatch, params, isPlaying]);
+  }, [dispatch, params]);
 
   if (isLoading) {
     return (<Spinner/>);
@@ -40,6 +40,7 @@ function PlayerScreen() {
   }
 
   const handlePlay = () => {
+    console.log(videoRef.current)
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();

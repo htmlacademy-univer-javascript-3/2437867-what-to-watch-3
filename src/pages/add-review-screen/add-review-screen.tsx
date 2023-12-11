@@ -9,7 +9,6 @@ import NotFoundError from '../../components/errors/not-found-error.tsx';
 
 
 function AddReviewScreen() {
-  //const params = useParams();
   const film = useAppSelector(getFilm);
 
   if (film === null) {

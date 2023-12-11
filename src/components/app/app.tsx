@@ -29,7 +29,7 @@ function App() {
           }
         />
         <Route path={`${AppRoute.Movie }/:id`} element={<MoviePageScreen/>}/>
-        <Route path={`${AppRoute.Movie }/:id${ AppRoute.Review}`} element={<AddReviewScreen/>}/>
+        <Route path={`${AppRoute.Movie }/:id${AppRoute.Review}`} element={<AddReviewScreen/>}/>
         <Route path={`${AppRoute.Player }/:id`} element={<PlayerScreen/>}/>
         <Route path={AppRoute.NotFound} element={<NotFoundError/>}/>
       </Routes>
