@@ -16,8 +16,8 @@ import {
   getSimilarFilms
 } from '../../store/films-process/selectors.ts';
 import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
-import MovieFavoriteList from '../../components/movie/movie-favorite-list.tsx';
-import MoviePlay from '../../components/movie/movie-play.tsx';
+import MovieFavoriteList from '../../components/movie-favorite-list/movie-favorite-list.tsx';
+import MoviePlay from '../../components/movie-play/movie-play.tsx';
 
 function MoviePageScreen() {
   const params = useParams();

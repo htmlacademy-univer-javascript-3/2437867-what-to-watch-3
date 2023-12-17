@@ -2,7 +2,7 @@ import {FormEvent, useState} from 'react';
 import {fetchAddReviewAction} from '../../store/api-actions.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getFilm} from '../../store/films-process/selectors.ts';
-import {toast} from "react-toastify";
+import {toast} from 'react-toastify';
 
 function AddReview() {
   const [text, setText] = useState<string>('');
@@ -13,7 +13,7 @@ function AddReview() {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (text.length < 50 || text.length > 400) {
-      toast.warn("Text length must be more than 50 and less than 400 characters")
+      toast.warn('Text length must be more than 50 and less than 400 characters');
       return;
     }
     dispatch(fetchAddReviewAction({comment: text, filmId: film?.id, rating: rating}));

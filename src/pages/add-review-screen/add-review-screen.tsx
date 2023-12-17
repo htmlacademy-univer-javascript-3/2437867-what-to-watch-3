@@ -6,9 +6,9 @@ import {AppRoute} from '../../consts.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getFilm, getLoadingStatus} from '../../store/films-process/selectors.ts';
 import NotFoundError from '../../components/errors/not-found-error.tsx';
-import {useEffect} from "react";
-import {fetchFilmAction} from "../../store/api-actions.ts";
-import Spinner from "../../components/spinner/spinner.tsx";
+import {useEffect} from 'react';
+import {fetchFilmAction} from '../../store/api-actions.ts';
+import Spinner from '../../components/spinner/spinner.tsx';
 
 
 function AddReviewScreen() {

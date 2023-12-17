@@ -6,16 +6,21 @@ type MovieOverviewProps = {
 
 function MovieOverview({film}: MovieOverviewProps) {
   const ratingFilm = () => {
-    if (film.rating >= 0 && film.rating < 3)
-    {return 'Bad';}
-    if (film.rating >= 3 && film.rating < 5)
-    {return 'Normal';}
-    if (film.rating >= 5 && film.rating < 8)
-    {return 'Good';}
-    if (film.rating >= 8 && film.rating < 10)
-    {return 'Very good';}
-    if (film.rating === 10)
-    {return 'Awesome';}
+    if (film.rating >= 0 && film.rating < 3) {
+      return 'Bad';
+    }
+    if (film.rating >= 3 && film.rating < 5) {
+      return 'Normal';
+    }
+    if (film.rating >= 5 && film.rating < 8) {
+      return 'Good';
+    }
+    if (film.rating >= 8 && film.rating < 10) {
+      return 'Very good';
+    }
+    if (film.rating === 10) {
+      return 'Awesome';
+    }
   };
 
   return (

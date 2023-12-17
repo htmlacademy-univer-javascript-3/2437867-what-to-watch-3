@@ -31,11 +31,11 @@ function App() {
         />
         <Route path={`${AppRoute.Movie }/:id`} element={<MoviePageScreen/>}/>
         <Route path={`${AppRoute.Movie }/:id${AppRoute.Review}`}
-               element={
-                 <PrivateRoute>
-                   <AddReviewScreen/>
-                 </PrivateRoute>
-               }
+          element={
+            <PrivateRoute>
+              <AddReviewScreen/>
+            </PrivateRoute>
+          }
         />
         <Route path={`${AppRoute.Player }/:id`} element={<PlayerScreen/>}/>
         <Route path={AppRoute.NotFound} element={<NotFoundError/>}/>

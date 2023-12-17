@@ -22,13 +22,7 @@ function PlayerScreen() {
 
   useEffect(() => {
     dispatch(fetchFilmAction(params.id));
-    if (videoRef.current !== null) {
-      videoRef.current.addEventListener('loadeddata', () => setIsLoadingFilm(false));
-
-      if (!isPlaying) {
-        videoRef.current.load();
-      }
-    }
+    setIsLoadingFilm(false);
   }, [dispatch, params]);
 
   if (isLoading) {
@@ -40,7 +34,6 @@ function PlayerScreen() {
   }
 
   const handlePlay = () => {
-    console.log(videoRef.current)
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();

@@ -3,8 +3,8 @@ import {getFavoriteFilmsCount} from '../../store/films-process/selectors.ts';
 import {Film, FilmPromo} from '../../types/film.ts';
 import {useEffect} from 'react';
 import {fetchChangeFavoriteFilmsAction, fetchFavoriteFilmsAction} from '../../store/api-actions.ts';
-import {getAuthorizationStatus} from "../../store/user-process/selectors.ts";
-import {AuthorizationStatus} from "../../consts.ts";
+import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
+import {AuthorizationStatus} from '../../consts.ts';
 
 type MovieFavoriteListProps = {
   film: Film | FilmPromo;
@@ -32,7 +32,7 @@ function MovieFavoriteList(props: MovieFavoriteListProps) {
         {film.isFavorite ? <use xlinkHref="#in-list"></use> : <use xlinkHref="#add"></use>}
       </svg>
       <span>My list</span>
-      <span className="film-card__count">{authStatus == AuthorizationStatus.Auth ? favoriteFilmsCount: 0}</span>
+      <span className="film-card__count">{authStatus === AuthorizationStatus.Auth ? favoriteFilmsCount : 0}</span>
     </button>
   );
 }

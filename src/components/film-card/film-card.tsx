@@ -24,7 +24,7 @@ function FilmCard({film}: FilmCardProps) {
 
   const handleClick = () => {
     navigate(`${AppRoute.Movie }/${film.id}`);
-  }
+  };
 
   return (
     <article className="small-film-card catalog__films-card" onMouseEnter={onMouseEnter}

@@ -1,10 +1,10 @@
 import {FormEvent, useRef} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {loginAction} from '../../store/api-actions.ts';
-import {getAuthorizationStatus} from "../../store/user-process/selectors.ts";
-import {AppRoute, AuthorizationStatus} from "../../consts.ts";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
+import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
+import {AppRoute, AuthorizationStatus} from '../../consts.ts';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ function SignInForm() {
           password: passwordRef.current.value
         }));
       } else {
-        toast.warn("Password should contain 1 letter and 1 number");
+        toast.warn('Password should contain 1 letter and 1 number');
       }
     }
   };
