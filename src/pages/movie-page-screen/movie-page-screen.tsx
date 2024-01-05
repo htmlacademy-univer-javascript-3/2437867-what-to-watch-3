@@ -3,7 +3,7 @@ import Logo from '../../components/logo/logo.tsx';
 import User from '../../components/user/user.tsx';
 import {Link, useParams} from 'react-router-dom';
 import FilmsContainer from '../../components/films-container/films-container.tsx';
-import {AppRoute, AuthorizationStatus} from '../../consts.ts';
+import {AppRoute, AuthorizationStatus, SIMILAR_FILMS_COUNT} from '../../consts.ts';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {fetchFilmAction, fetchSimilarFilmsAction} from '../../store/api-actions.ts';
@@ -16,8 +16,8 @@ import {
   getSimilarFilms
 } from '../../store/films-process/selectors.ts';
 import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
-import MovieFavoriteList from '../../components/movie/movie-favorite-list.tsx';
-import MoviePlay from '../../components/movie/movie-play.tsx';
+import MovieFavoriteList from '../../components/movie-favorite-list/movie-favorite-list.tsx';
+import MoviePlay from '../../components/movie-play/movie-play.tsx';
 
 function MoviePageScreen() {
   const params = useParams();
@@ -94,7 +94,7 @@ function MoviePageScreen() {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsContainer films={similarFilms}/>
+          <FilmsContainer films={similarFilms} filmsCount={SIMILAR_FILMS_COUNT}/>
         </section>
 
         <Footer/>

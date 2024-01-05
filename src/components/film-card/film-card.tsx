@@ -1,10 +1,8 @@
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {AppRoute, EXECUTION_DELAY} from '../../consts.ts';
 import VideoPlayer from '../video-player/video-player.tsx';
 import {useState} from 'react';
-import {useAppDispatch} from '../../hooks';
 import {FilmShortInfo} from '../../types/film.ts';
-import {resetShowMore} from '../../store/films-process/films-process.ts';
 
 type FilmCardProps = {
   film: FilmShortInfo;
@@ -13,7 +11,7 @@ type FilmCardProps = {
 function FilmCard({film}: FilmCardProps) {
   const [timer, setTimer] = useState<NodeJS.Timeout | undefined>(undefined);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onMouseEnter = () => {
     setTimer(setTimeout(() => setIsHovered(true), EXECUTION_DELAY));
@@ -24,9 +22,13 @@ function FilmCard({film}: FilmCardProps) {
     setIsHovered(false);
   };
 
+  const handleClick = () => {
+    navigate(`${AppRoute.Movie }/${film.id}`);
+  };
+
   return (
     <article className="small-film-card catalog__films-card" onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseLeave={onMouseLeave} onClick={handleClick}
     >
       <div className="small-film-card__image">
         {
@@ -36,7 +38,7 @@ function FilmCard({film}: FilmCardProps) {
         }
       </div>
       <h3 className="small-film-card__title">
-        <Link onClick={() => dispatch(resetShowMore())} to={`${AppRoute.Movie }/${film.id}`} className="small-film-card__link">{film.name}</Link>
+        <label className="small-film-card__link">{film.name}</label>
       </h3>
     </article>
   );

@@ -8,8 +8,8 @@ function VideoPlayer(props: VideoPlayerProps) {
     <video
       src={props.videoLink}
       poster={props.posterSrc}
-      width="200"
-      height="175"
+      width="100%"
+      height="100%"
       muted
       autoPlay
     />

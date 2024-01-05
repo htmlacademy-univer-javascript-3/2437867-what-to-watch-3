@@ -8,7 +8,7 @@ import {useEffect} from 'react';
 import ShowMore from '../../components/show-more/show-more.tsx';
 import {AuthorizationStatus} from '../../consts.ts';
 import Spinner from '../../components/spinner/spinner.tsx';
-import {getFilms} from '../../store/films-process/films-process.ts';
+import {getFilms, resetShowMore} from '../../store/films-process/films-process.ts';
 import {
   getFilmsByGenre,
   getFilmsCount,
@@ -18,8 +18,8 @@ import {
 } from '../../store/films-process/selectors.ts';
 import NotFoundError from '../../components/errors/not-found-error.tsx';
 import {getAuthorizationStatus} from '../../store/user-process/selectors.ts';
-import MovieFavoriteList from '../../components/movie/movie-favorite-list.tsx';
-import MoviePlay from '../../components/movie/movie-play.tsx';
+import MovieFavoriteList from '../../components/movie-favorite-list/movie-favorite-list.tsx';
+import MoviePlay from '../../components/movie-play/movie-play.tsx';
 
 function MainScreen() {
   const dispatch = useAppDispatch();
@@ -33,6 +33,10 @@ function MainScreen() {
   useEffect(() => {
     dispatch(getFilms());
   }, [selectedGenre, dispatch]);
+
+  useEffect(() => {
+    dispatch(resetShowMore());
+  }, [dispatch]);
 
   if (authorizationStatus === AuthorizationStatus.Unknown || isLoading) {
     return (<Spinner/>);
@@ -82,7 +86,7 @@ function MainScreen() {
       <div className="page-content">
         <section className="catalog">
           <CatalogGenres/>
-          <FilmsContainer films={filmsByGenre}/>
+          <FilmsContainer films={filmsByGenre} filmsCount={filmsCount}/>
           {filmsByGenre.length >= filmsCount && <ShowMore/>}
         </section>
 

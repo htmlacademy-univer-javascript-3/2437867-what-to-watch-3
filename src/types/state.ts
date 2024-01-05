@@ -24,6 +24,7 @@ export type FilmsProcess = {
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
+  authorizationStatusLoading: boolean;
   user: UserData | null;
 }
 
