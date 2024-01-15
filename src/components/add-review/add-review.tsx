@@ -6,7 +6,8 @@ import {toast} from 'react-toastify';
 
 function AddReview() {
   const [text, setText] = useState<string>('');
-  const [rating, setRating] = useState<number>(8);
+  const [rating, setRating] = useState<number>(0);
+  const [disable, setDisable] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const film = useAppSelector(getFilm);
 
@@ -16,7 +17,13 @@ function AddReview() {
       toast.warn('Text length must be more than 50 and less than 400 characters');
       return;
     }
+    if (rating === 0) {
+      toast.warn('Set rating to add review');
+      return;
+    }
+    setDisable(true);
     dispatch(fetchAddReviewAction({comment: text, filmId: film?.id, rating: rating}));
+    setDisable(false);
   };
 
   return (
@@ -26,7 +33,7 @@ function AddReview() {
           <div className="rating__stars">
             {Array.from({length: 10}).map((_, index) => (
               <>
-                <input className="rating__input" id={`star-${10 - index}`} type="radio" name="rating"
+                <input disabled={disable} className="rating__input" id={`star-${10 - index}`} type="radio" name="rating"
                   value={10 - rating} checked={rating === (10 - index)} onChange={() => setRating(10 - index)}
                 />
                 <label className="rating__label" htmlFor={`star-${10 - index}`}>Rating {10 - index}</label>
@@ -37,11 +44,11 @@ function AddReview() {
 
         <div className="add-review__text">
           <textarea className="add-review__textarea" name="review-text" id="review-text"
-            placeholder="Review text" value={text} onChange={(evt) => setText(evt.target.value)}
+            placeholder="Review text" disabled={disable} value={text} onChange={(evt) => setText(evt.target.value)}
           >
           </textarea>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button className="add-review__btn" type="submit" disabled={disable}>Post</button>
           </div>
 
         </div>

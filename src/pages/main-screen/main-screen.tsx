@@ -36,7 +36,7 @@ function MainScreen() {
 
   useEffect(() => {
     dispatch(resetShowMore());
-  }, [dispatch]);
+  }, [dispatch, selectedGenre]);
 
   if (authorizationStatus === AuthorizationStatus.Unknown || isLoading) {
     return (<Spinner/>);
