@@ -34,7 +34,7 @@ function AddReview() {
             {Array.from({length: 10}).map((_, index) => (
               <>
                 <input disabled={disable} className="rating__input" id={`star-${10 - index}`} type="radio" name="rating"
-                       value={10 - rating} checked={rating === (10 - index)} onChange={() => setRating(10 - index)}
+                  value={10 - rating} checked={rating === (10 - index)} onChange={() => setRating(10 - index)}
                 />
                 <label className="rating__label" htmlFor={`star-${10 - index}`}>Rating {10 - index}</label>
               </>
@@ -44,7 +44,7 @@ function AddReview() {
 
         <div className="add-review__text">
           <textarea className="add-review__textarea" name="review-text" id="review-text"
-                    placeholder="Review text" disabled={disable} value={text} onChange={(evt) => setText(evt.target.value)}
+            placeholder="Review text" disabled={disable} value={text} onChange={(evt) => setText(evt.target.value)}
           >
           </textarea>
           <div className="add-review__submit">

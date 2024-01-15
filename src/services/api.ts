@@ -41,7 +41,7 @@ export const createAPI = (): AxiosInstance => {
     (response) => response,
     (error: AxiosError<DetailMessageType>) => {
       if (error.response && error.response.status === 0){
-        toast.warn("Server is not available");
+        toast.warn('Server is not available');
       }
       if (error.response && shouldDisplayError(error.response)) {
         const detailMessage = (error.response.data);
